@@ -12,7 +12,7 @@ export class UsuarioService {
 
   constructor(private http: HttpClient) {}
 
-  list(){
+  list(){ //lista usuarios
     return this.http.get<Usuario[]>(this.url);
   }
 }
