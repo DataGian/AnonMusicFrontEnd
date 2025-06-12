@@ -3,4 +3,5 @@ export class Usuario{
     email:string=""
     username:string=""
     enabled:boolean=false
+    password:string=""
 }

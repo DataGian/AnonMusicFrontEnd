@@ -10,5 +10,4 @@ import { ListarusuarioComponent } from './listarusuario/listarusuario.component'
 })
 export class UsuarioComponent {
   constructor(public route:ActivatedRoute){}
-
 }
