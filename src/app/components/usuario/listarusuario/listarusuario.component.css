@@ -28,6 +28,7 @@ table.mat-table {
   color: #ffffff;
   font-weight: 600;
   text-align: center;
+  vertical-align: middle;
   align-items: center;
   justify-content: center;
   padding: 12px;
@@ -37,6 +38,7 @@ table.mat-table {
 .mat-cell {
   text-align: center;
   align-items: center;
+  vertical-align: middle;
   justify-content: center;
   font-size: 0.95rem;
   padding: 12px;
@@ -59,18 +61,21 @@ tr.mat-row:hover {
 }
 
 button[matbutton] {
-  min-width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
+  padding: 0;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
   transition: background-color 0.2s ease;
 }
 
+
 button[matbutton]:hover {
   background-color: rgba(63, 81, 181, 0.1);
-}
-
-mat-icon {
-  color: #3f51b5;
 }
 
 @media (max-width: 768px) {
@@ -89,24 +94,37 @@ mat-icon {
   }
 }
 .edit-button {
-  background-color: #e8f0fe;
+  background-color: #fcfbfd;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  margin: auto;
   border-radius: 50%;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 4px rgba(50, 50, 50, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .edit-button:hover {
-  background-color: #d2e3fc;
+  background-color: #407bd4;
   transform: scale(1.1);
 }
 .delete-button {
-  background-color: #fdecea;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  margin: auto;
+  background-color: #fbf4f4;
   border-radius: 50%;
   transition: background-color 0.3s ease, transform 0.2s ease;
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
 .delete-button:hover {
-  background-color: #f8d7da;
+  background-color: #ffffff;
   transform: scale(1.1);
+}
+  mat-icon {
+  color: #5f4bf8;
 }

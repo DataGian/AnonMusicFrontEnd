@@ -1,6 +1,7 @@
 <div class="container">
   <div style="text-align: center; margin: 5%">
-    <h1>Registro de Usuarios</h1></div>
+    <h1>{{ edicion ? 'Actualizar Usuarios' : 'Registro de Usuarios' }}</h1>
+    </div>
   <div style="text-align: center; margin: 5%">
     <form [formGroup]="form" (submit)="aceptar()">
         <mat-form-field class="example-full-width" *ngIf="edicion">
