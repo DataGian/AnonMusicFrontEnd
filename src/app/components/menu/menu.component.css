@@ -1,0 +1,13 @@
+.custom-toolbar {
+ background-color: rgb(253, 41, 13);
+}
+.btn-rojo {
+ background-color: rgb(253, 41, 13);
+ border-radius: 4px;
+ margin: 4px;
+ border: none;
+}
+.custom-toolbar button,
+.custom-toolbar mat-icon {
+ color: white;
+}

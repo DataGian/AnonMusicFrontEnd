@@ -1,0 +1,23 @@
+<mat-toolbar class="custom-toolbar">  
+ <div>
+  <button mat-button [matMenuTriggerFor]="menuUsuarios" class="btn-rojo">
+   <mat-icon>person</mat-icon>
+   Usuarios
+  </button>
+ </div>
+
+ <div>
+  <button mat-button [matMenuTriggerFor]="menuNotificaciones" class="btn-rojo">
+   <mat-icon>notification_important</mat-icon>
+   Notificaciones
+  </button>
+ </div>
+</mat-toolbar>
+<mat-menu #menuUsuarios="matMenu">
+ <button mat-menu-item routerLink="/usuarios">Listar</button>
+ <button mat-menu-item routerLink="/usuarios/insertareditar">Registrar</button>
+</mat-menu>
+<mat-menu #menuNotificaciones="matMenu">
+ <button mat-menu-item routerLink="/notificaciones">Listar</button>
+ <button mat-menu-item routerLink="/notificaciones/insertar">Registrar</button>
+</mat-menu>

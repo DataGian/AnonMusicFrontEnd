@@ -5,6 +5,9 @@ import { InsertareditarComponent } from './components/usuario/insertareditar/ins
 import { InsertareditarNotificacionComponent } from './components/notificacion/insertareditar/insertareditar.component';
 
 export const routes: Routes = [
+    {
+    path:'',redirectTo:'usuarios',pathMatch:'full'
+  },
     {path:'usuarios', component: UsuarioComponent,
         children: [
             {path:'insertareditar', component: InsertareditarComponent},

@@ -4,10 +4,14 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { Notificacion } from '../../../models/notificacion';
 import { RouterLink } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-listarnotificaciones',
-  imports: [MatTableModule,RouterLink,MatIconModule],
+  imports: [MatTableModule,RouterLink,MatIconModule,MatCardModule,MatButtonModule,MatTooltipModule,RouterModule],
   templateUrl: './listarnotificaciones.component.html',
   styleUrl: './listarnotificaciones.component.css',
 })
