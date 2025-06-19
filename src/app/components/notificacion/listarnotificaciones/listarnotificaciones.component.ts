@@ -1,38 +1,47 @@
 import { Component, OnInit } from '@angular/core';
-import { NotificacionService } from '../../../services/notificacion.service';
-import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { Notificacion } from '../../../models/notificacion';
-import { RouterLink } from '@angular/router';
-import { MatIconModule } from '@angular/material/icon';
+import { CommonModule } from '@angular/common';
+import { RouterModule, RouterLink } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { RouterModule } from '@angular/router';
+import { NotificacionService } from '../../../services/notificacion.service';
+import { Notificacion } from '../../../models/notificacion';
 
 @Component({
   selector: 'app-listarnotificaciones',
-  imports: [MatTableModule,RouterLink,MatIconModule,MatCardModule,MatButtonModule,MatTooltipModule,RouterModule],
+  standalone: true,
+  imports: [
+    CommonModule,
+    RouterModule,           
+    RouterLink,             
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule,
+    MatTooltipModule
+  ],
   templateUrl: './listarnotificaciones.component.html',
   styleUrl: './listarnotificaciones.component.css',
 })
 export class ListarnotificacionesComponent implements OnInit {
-  dataSource: MatTableDataSource<Notificacion> = new MatTableDataSource();
+  dataSource: Notificacion[] = [];
+  mostrarTexto = false;
 
-  displayedColumns: string[] = ['c1', 'c2', 'c3','c4','c5'];
   constructor(private nS: NotificacionService) {}
+
   ngOnInit(): void {
     this.nS.list().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
+      this.dataSource = data;
     });
     this.nS.getList().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
+      this.dataSource = data;
     });
   }
 
-  eliminar(id:number) {
+  eliminar(id: number): void {
     this.nS.deleteNotificacion(id).subscribe(() => {
       this.nS.list().subscribe((data) => {
-        this.nS.setList(data);
+        this.dataSource = data;
       });
     });
   }
