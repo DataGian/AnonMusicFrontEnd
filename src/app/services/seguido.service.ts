@@ -28,13 +28,13 @@ export class SeguidoService {
     this.listacambio.next(listaNueva);
   }
 
-  listId(id: number) { //lista usuario por id
+  listId(id: number) { 
       return this.h.get<Seguido>(`${this.url}/${id}`);
     }
-    update(u: Seguido) { //actualiza usuario
-      return this.h.put<Seguido>(`${this.url}/modificar`, u);
+    update(s: Seguido) { 
+      return this.h.put<Seguido>(`${this.url}/modificar`, s);
     }
-    deleteusuario(id:number) { //elimina usuario
+    deleteSeguido(id:number) { 
       return this.h.delete<Seguido>(`${this.url}/${id}`);
   
     }

@@ -30,7 +30,7 @@ export class ListarseguidoComponent implements OnInit {
   }
 
   eliminar(id: number) {
-    this.sS.deleteusuario(id).subscribe(() => {
+    this.sS.deleteSeguido(id).subscribe(() => {
       this.sS.list().subscribe((data) => {
         this.sS.setList(data);
       });

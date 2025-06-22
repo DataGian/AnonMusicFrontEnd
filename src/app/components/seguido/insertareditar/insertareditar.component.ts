@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   templateUrl: './insertareditar.component.html',
   styleUrl: './insertareditar.component.css'
 })
-export class InsertareditarComponent {
+export class InsertareditarSeguidoComponent {
 
 }

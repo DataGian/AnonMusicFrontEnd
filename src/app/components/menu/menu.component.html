@@ -20,6 +20,13 @@
   </button>
  </div>
 
+ <div>
+  <button mat-button [matMenuTriggerFor]="menuPublicaciones" class="btn-rojo">
+   <mat-icon>article</mat-icon>
+   Publicaciones
+  </button>
+ </div>
+
 </mat-toolbar>
 <mat-menu #menuUsuarios="matMenu">
  <button mat-menu-item routerLink="/usuarios">Listar</button>
@@ -31,4 +38,7 @@
 </mat-menu>
 <mat-menu #menuSeguidos="matMenu">
  <button mat-menu-item routerLink="/seguidos">Listar</button>
+</mat-menu>
+<mat-menu #menuPublicaciones="matMenu">
+ <button mat-menu-item routerLink="/publicaciones">Listar</button>
 </mat-menu>

@@ -27,8 +27,8 @@
         <button mat-icon-button
         color="primary"
         class="edit-button"
-        [routerLink]="['ediciones', element.idUsuario]"
-        matTooltip="Editar usuario">
+        [routerLink]="['ediciones', element.idSeguidos]"
+        matTooltip="Editar seguido">
   <mat-icon>edit</mat-icon>
 </button>
 
@@ -41,8 +41,8 @@
         <button mat-icon-button
         color="warn"
         class="delete-button"
-        (click)="eliminar(element.idUsuario)"
-        matTooltip="Eliminar usuario">
+        (click)="eliminar(element.idSeguidos)"
+        matTooltip="Eliminar seguido">
         <mat-icon>delete</mat-icon>
         </button>
 
