@@ -27,6 +27,13 @@
   </button>
  </div>
 
+ <div>
+  <button mat-button [matMenuTriggerFor]="menuPlaylistxusuario" class="btn-rojo">
+   <mat-icon>queue_music</mat-icon>
+   Playlist de Usuario
+  </button>
+ </div>
+
 </mat-toolbar>
 <mat-menu #menuUsuarios="matMenu">
  <button mat-menu-item routerLink="/usuarios">Listar</button>
@@ -41,4 +48,7 @@
 </mat-menu>
 <mat-menu #menuPublicaciones="matMenu">
  <button mat-menu-item routerLink="/publicaciones">Listar</button>
+</mat-menu>
+<mat-menu #menuPlaylistxusuario="matMenu">
+ <button mat-menu-item routerLink="/playlistsxusuario">Listar</button>
 </mat-menu>

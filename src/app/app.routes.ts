@@ -7,6 +7,8 @@ import { SeguidoComponent } from './components/seguido/seguido.component';
 import { InsertareditarSeguidoComponent } from './components/seguido/insertareditar/insertareditar.component';
 import { PublicacionComponent } from './components/publicacion/publicacion.component';
 import { InsertareditarpublicacionComponent } from './components/publicacion/insertareditarpublicacion/insertareditarpublicacion.component';
+import { PlaylistxusuarioComponent } from './components/playlistxusuario/playlistxusuario.component';
+import { InsertareditarplaylistxusuarioComponent } from './components/playlistxusuario/insertareditarplaylistxusuario/insertareditarplaylistxusuario.component';
 
 export const routes: Routes = [
     {
@@ -34,6 +36,12 @@ export const routes: Routes = [
         children:[
             {path: 'insertar', component: InsertareditarpublicacionComponent},
             {path: 'ediciones/:id', component: InsertareditarpublicacionComponent} 
+        ]
+    },
+    { path: 'playlistsxusuario', component: PlaylistxusuarioComponent, 
+        children:[
+            {path: 'insertar', component: InsertareditarplaylistxusuarioComponent},
+            {path: 'ediciones/:id', component: InsertareditarplaylistxusuarioComponent} 
         ]
     },
     
