@@ -12,6 +12,14 @@
    Notificaciones
   </button>
  </div>
+
+ <div>
+  <button mat-button [matMenuTriggerFor]="menuSeguidos" class="btn-rojo">
+   <mat-icon>group</mat-icon>
+   Seguidos
+  </button>
+ </div>
+
 </mat-toolbar>
 <mat-menu #menuUsuarios="matMenu">
  <button mat-menu-item routerLink="/usuarios">Listar</button>
@@ -20,4 +28,7 @@
 <mat-menu #menuNotificaciones="matMenu">
  <button mat-menu-item routerLink="/notificaciones">Listar</button>
  <button mat-menu-item routerLink="/notificaciones/insertar">Registrar</button>
+</mat-menu>
+<mat-menu #menuSeguidos="matMenu">
+ <button mat-menu-item routerLink="/seguidos">Listar</button>
 </mat-menu>

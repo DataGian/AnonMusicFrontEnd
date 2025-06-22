@@ -1,0 +1,56 @@
+<div class="container">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <h1>Lista de Seguidos</h1>
+  </div>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 mat-table">
+
+    <ng-container matColumnDef="c1">
+      <th mat-header-cell *matHeaderCellDef class="center-cell">ID</th>
+      <td mat-cell *matCellDef="let element" class="center-cell">{{ element.idSeguidos }}</td>
+    </ng-container>
+    
+      <ng-container matColumnDef="c2">
+        <th mat-header-cell *matHeaderCellDef>Cantidad</th>
+        <td mat-cell *matCellDef="let element">{{ element.cantidad }}</td>
+      </ng-container>
+
+    <!-- Symbol Column -->
+      <ng-container matColumnDef="c3">
+        <th mat-header-cell *matHeaderCellDef>Usuario</th>
+        <td mat-cell *matCellDef="let element">{{ element.usuario.username }}</td>
+      </ng-container>
+
+    <ng-container matColumnDef="c4">
+      <th mat-header-cell *matHeaderCellDef class="center-cell">Actualizar</th>
+      <td mat-cell *matCellDef="let element" class="center-cell">
+        <button mat-icon-button
+        color="primary"
+        class="edit-button"
+        [routerLink]="['ediciones', element.idUsuario]"
+        matTooltip="Editar usuario">
+  <mat-icon>edit</mat-icon>
+</button>
+
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="c5">
+      <th mat-header-cell *matHeaderCellDef class="center-cell">Eliminar</th>
+      <td mat-cell *matCellDef="let element" class="center-cell">
+        <button mat-icon-button
+        color="warn"
+        class="delete-button"
+        (click)="eliminar(element.idUsuario)"
+        matTooltip="Eliminar usuario">
+        <mat-icon>delete</mat-icon>
+        </button>
+
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+  </table>
+</div>

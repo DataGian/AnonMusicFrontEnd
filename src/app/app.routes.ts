@@ -3,6 +3,7 @@ import { UsuarioComponent } from './components/usuario/usuario.component';
 import { NotificacionComponent } from './components/notificacion/notificacion.component';
 import { InsertareditarComponent } from './components/usuario/insertareditar/insertareditar.component';
 import { InsertareditarNotificacionComponent } from './components/notificacion/insertareditar/insertareditar.component';
+import { SeguidoComponent } from './components/seguido/seguido.component';
 
 export const routes: Routes = [
     {
@@ -19,5 +20,7 @@ export const routes: Routes = [
             {path: 'insertar', component: InsertareditarNotificacionComponent},
             {path: 'ediciones/:id', component: InsertareditarNotificacionComponent} 
         ]
-    }
+    },
+    { path: 'seguidos', component: SeguidoComponent, 
+    },
 ];
