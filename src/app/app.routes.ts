@@ -9,9 +9,10 @@ import { PublicacionComponent } from './components/publicacion/publicacion.compo
 import { InsertareditarpublicacionComponent } from './components/publicacion/insertareditarpublicacion/insertareditarpublicacion.component';
 import { PlaylistxusuarioComponent } from './components/playlistxusuario/playlistxusuario.component';
 import { InsertareditarplaylistxusuarioComponent } from './components/playlistxusuario/insertareditarplaylistxusuario/insertareditarplaylistxusuario.component';
-import { SeguidoresService } from './services/seguidores.service';
 import { SeguidoresComponent } from './components/seguidores/seguidores.component';
 import { InsertareditarseguidoresComponent } from './components/seguidores/insertareditarseguidores/insertareditarseguidores.component';
+import { NotificacionesxusuarioComponent } from './components/notificacionesxusuario/notificacionesxusuario.component';
+import { InsertareditarnotificacionxusuarioComponent } from './components/notificacionesxusuario/insertareditarnotificacionxusuario/insertareditarnotificacionxusuario.component';
 
 export const routes: Routes = [
     {
@@ -28,6 +29,13 @@ export const routes: Routes = [
         children:[
             {path: 'insertar', component: InsertareditarNotificacionComponent},
             {path: 'ediciones/:id', component: InsertareditarNotificacionComponent} 
+        ]
+    },
+    {
+        path: 'notificacionesxusuario',component: NotificacionesxusuarioComponent ,
+        children:[
+            {path: 'insertar',component:InsertareditarnotificacionxusuarioComponent },
+            {path: 'ediciones/:id',component:InsertareditarnotificacionxusuarioComponent } 
         ]
     },
     { path: 'seguidos', component: SeguidoComponent, 

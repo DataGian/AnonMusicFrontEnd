@@ -1,0 +1,61 @@
+<div class="container">
+  <div style="text-align: center; margin: 5%">
+    <h1>{{ edicion ? 'Actualizar Notificaciones de Usuario' : 'Registro de Notificaciones de Usuario' }}</h1>
+    </div>
+  <div style="text-align: center; margin: 5%">
+    <form [formGroup]="form" (submit)="aceptar()">
+      <mat-form-field class="example-full-width" *ngIf="edicion">
+        <mat-label>Id</mat-label>
+        <input matInput formControlName="codigo" />
+        <mat-error *ngIf="form.get('codigo')?.hasError('required')">
+          El codigo es obligatorio!!
+        </mat-error>
+      </mat-form-field>
+      <br />
+      <mat-radio-group
+        aria-label="Select an option"
+        formControlName="visto"
+        [(ngModel)]="visto"
+      >
+        <mat-radio-button [value]="true">Leido</mat-radio-button>
+        <mat-radio-button [value]="false">No Leido</mat-radio-button>
+      </mat-radio-group>
+      <br />
+      <mat-form-field>
+        <mat-label>Fecha:</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="fecha" />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="form.get('fecha')?.hasError('required')">
+          La fecha es obligatoria!!
+        </mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Usuarios</mat-label>
+        <mat-select formControlName="usuariosnxu">
+          @for (food of listaUsuarios; track food) {
+          <mat-option [value]="food.idUsuario">{{ food.username }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Notificaciones</mat-label>
+        <mat-select formControlName="notificacionesnxu">
+          @for (food of listaNotificacion; track food) {
+          <mat-option [value]="food.idNotificacion">{{
+            food.tipoNotificacion
+          }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <br />
+      <button matButton="filled">Aceptar</button>
+    </form>
+  </div>
+</div>
