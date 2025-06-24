@@ -9,10 +9,14 @@ import { PublicacionComponent } from './components/publicacion/publicacion.compo
 import { InsertareditarpublicacionComponent } from './components/publicacion/insertareditarpublicacion/insertareditarpublicacion.component';
 import { PlaylistxusuarioComponent } from './components/playlistxusuario/playlistxusuario.component';
 import { InsertareditarplaylistxusuarioComponent } from './components/playlistxusuario/insertareditarplaylistxusuario/insertareditarplaylistxusuario.component';
+import { SeguidoresService } from './services/seguidores.service';
+import { SeguidoresComponent } from './components/seguidores/seguidores.component';
+import { InsertareditarseguidoresComponent } from './components/seguidores/insertareditarseguidores/insertareditarseguidores.component';
 
 export const routes: Routes = [
     {
     path:'',redirectTo:'usuarios',pathMatch:'full'
+    
   },
     {path:'usuarios', component: UsuarioComponent,
         children: [
@@ -44,5 +48,10 @@ export const routes: Routes = [
             {path: 'ediciones/:id', component: InsertareditarplaylistxusuarioComponent} 
         ]
     },
-    
+    { path: 'seguidores', component: SeguidoresComponent, 
+        children:[
+            {path: 'insertar', component: InsertareditarseguidoresComponent},
+            {path: 'ediciones/:id', component: InsertareditarseguidoresComponent} 
+        ]
+    },
 ];
