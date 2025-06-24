@@ -18,7 +18,7 @@ export class PublicacionService {
   }
 
   insert(p: Publicacion) {
-    return this.h.post(`${this.url}/insert`, p);
+    return this.h.post(`${this.url}/registrar`, p);
   }
 
   getList() {

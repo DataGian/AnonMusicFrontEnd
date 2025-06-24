@@ -15,7 +15,7 @@
 
  <div>
   <button mat-button [matMenuTriggerFor]="menuSeguidos" class="btn-rojo">
-   <mat-icon>group</mat-icon>
+   <mat-icon>person_add</mat-icon>
    Seguidos
   </button>
  </div>
@@ -36,8 +36,8 @@
 
   <div>
   <button mat-button [matMenuTriggerFor]="menuSeguidores" class="btn-rojo">
-   <mat-icon>queue_music</mat-icon>
-   Seguidores de Usuario
+   <mat-icon>group_add</mat-icon>
+   Seguidores
   </button>
  </div>
 
@@ -52,12 +52,16 @@
 </mat-menu>
 <mat-menu #menuSeguidos="matMenu">
  <button mat-menu-item routerLink="/seguidos">Listar</button>
+ <button mat-menu-item routerLink="/seguidos/insertareditar">Registrar</button>
+
 </mat-menu>
 <mat-menu #menuPublicaciones="matMenu">
  <button mat-menu-item routerLink="/publicaciones">Listar</button>
+ <button mat-menu-item routerLink="/publicaciones/insertareditar">Registrar</button>
 </mat-menu>
 <mat-menu #menuPlaylistxusuario="matMenu">
  <button mat-menu-item routerLink="/playlistsxusuario">Listar</button>
+ <button mat-menu-item routerLink="/playlistsxusuario/insertareditar">Registrar</button>
 </mat-menu>
 <mat-menu #menuSeguidores="matMenu">
  <button mat-menu-item routerLink="/seguidores">Listar</button>

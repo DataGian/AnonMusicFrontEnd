@@ -32,19 +32,19 @@ export const routes: Routes = [
     },
     { path: 'seguidos', component: SeguidoComponent, 
         children:[
-            {path: 'insertar', component: InsertareditarSeguidoComponent},
+            {path: 'insertareditar', component: InsertareditarSeguidoComponent},
             {path: 'ediciones/:id', component: InsertareditarSeguidoComponent} 
         ]
     },
     { path: 'publicaciones', component: PublicacionComponent, 
         children:[
-            {path: 'insertar', component: InsertareditarpublicacionComponent},
+            {path: 'insertareditar', component: InsertareditarpublicacionComponent},
             {path: 'ediciones/:id', component: InsertareditarpublicacionComponent} 
         ]
     },
     { path: 'playlistsxusuario', component: PlaylistxusuarioComponent, 
         children:[
-            {path: 'insertar', component: InsertareditarplaylistxusuarioComponent},
+            {path: 'insertareditar', component: InsertareditarplaylistxusuarioComponent},
             {path: 'ediciones/:id', component: InsertareditarplaylistxusuarioComponent} 
         ]
     },

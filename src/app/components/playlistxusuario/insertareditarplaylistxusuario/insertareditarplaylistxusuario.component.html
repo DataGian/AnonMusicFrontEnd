@@ -1,1 +1,43 @@
-<p>insertareditarplaylistxusuario works!</p>
+<div class="container">
+  <div style="text-align: center; margin: 5%">
+    <h1>{{ edicion ? 'Actualizar Playlist de Usuario' : 'Registro de Playlist de Usuario' }}</h1>
+    </div>
+  <div style="text-align: center;margin: 5%;">
+    <form [formGroup]="form" (submit)="aceptar()">
+      <mat-form-field class="example-full-width" *ngIf="edicion">
+        <mat-label>ID</mat-label>
+        <input matInput formControlName="codigo" />
+        <mat-error *ngIf="form.get('codigo')?.hasError('required')">
+          El código es obligatorio!!
+        </mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field class="example-full-width">
+        <mat-label>Archivo</mat-label>
+        <input matInput formControlName="archivo" />
+        <mat-error *ngIf="form.get('archivo')?.hasError('required')">
+          El archivo es obligatorio!!
+        </mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field class="example-full-width">
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="nombre" />
+        <mat-error *ngIf="form.get('nombre')?.hasError('required')">
+          El nombre es obligatorio!!
+        </mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Usuarios</mat-label>
+        <mat-select formControlName="usuario">
+          @for (food of listaUsuarios; track food) {
+          <mat-option [value]="food.idUsuario">{{ food.username }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <br />
+      <button matButton="filled">Aceptar</button>
+    </form>
+  </div>
+</div>

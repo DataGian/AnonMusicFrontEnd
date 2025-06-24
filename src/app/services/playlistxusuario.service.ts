@@ -18,7 +18,7 @@ export class PlaylistxusuarioService {
   }
 
   insert(px: PlaylistxUsuario) {
-    return this.h.post(`${this.url}/insert`, px);
+    return this.h.post(`${this.url}/registrar`, px);
   }
   getList() {
     return this.listaCambio.asObservable();

@@ -18,7 +18,7 @@ export class SeguidoService {
   }
 
   insert(s: Seguido) {
-    return this.h.post(`${this.url}/insert`, s);
+    return this.h.post(`${this.url}/registrar`, s);
   }
 
   getList() {
