@@ -2,12 +2,42 @@
  background-color: rgb(253, 41, 13);
 }
 .btn-rojo {
- background-color: rgb(253, 41, 13);
+ background-color: rgb(0, 0, 0);
  border-radius: 4px;
  margin: 4px;
  border: none;
 }
 .custom-toolbar button,
 .custom-toolbar mat-icon {
- color: white;
+ color: #e4881d;
+}
+.custom-toolbar {
+  background-color: #000000;
+  color: #e4881d;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-anonmusic {
+  height: 40px;
+  width: auto;
+}
+
+.btn-rojo {
+  color: #e4881d;
+}
+
+a {
+  text-decoration: none;
+  color: #e4881d;
+  font-weight: bold;
+  font-size: 18px;
 }

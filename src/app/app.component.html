@@ -1,2 +1,75 @@
-<app-menu></app-menu>
+<ng-container *ngIf="shouldShowLanding()">
+  <div class="header">
+    <nav class="nav-left">
+      <a href="#intro">
+        <img src="assets/logo-anonmusic.png" alt="Logo de AnonMusic" class="logo-anonmusic">
+      </a>
+      <a href="#">AnonMusic</a>
+    </nav>
+    <div class="nav-group-right">
+      <nav class="nav-right">
+        <a href="#intro">Inicio</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <nav class="nav-login-register">
+        <a href="/usuarios">Tablas</a>
+      </nav>
+    </div>
+  </div>
+
+  <div class="section intro-offset" id="intro">
+    <div class="img-left">
+      <img src="assets/inicio2.png" alt="Logo de AnonMusic" class="logo-intro">
+    </div>
+    <div class="content-right">
+      <h1>Bienvenido a AnonMusic</h1>
+      <p>
+        AnonMusic es tu plataforma para compartir, explorar y disfrutar contenido musical único. Conecta con creadores, gestiona publicaciones y mantente al día con tus artistas anónimos favoritos.
+      </p>
+    </div>
+  </div>
+
+  <div class="section servicios" id="servicios">
+    <div class="servicio-izquierda">
+      <p>
+        Publica tus composiciones de manera anónima, sin preocuparte por revelar tu identidad. En AnonMusic, valoramos la creatividad por encima del nombre. Comparte tus ideas, letras, beats o canciones con total libertad y deja que tu talento hable por ti.
+      </p>
+    </div>
+    <div class="servicio-imagen-derecha">
+      <img src="assets/contacto1.jpg" alt="Servicios AnonMusic" />
+    </div>
+    <div class="servicio-derecha">
+      <p>
+        Puedes seguir a tus artistas favoritos y descubrir nuevas voces que comparten tu estilo musical. Personaliza tu experiencia, mantente actualizado con sus publicaciones y forma parte de una comunidad donde cada usuario es también un creador.
+      </p>
+    </div>
+    <div class="servicio-imagen-izquierda">
+      <img src="assets/contacto2.jpg" alt="Más servicios AnonMusic" />
+    </div>
+  </div>
+
+  <div class="section" id="contacto">
+    <div class="contacto-form">
+      <h2>AnonMusic - Contáctanos</h2>
+      <form>
+        <label for="nombre">Nombre y Apellidos</label>
+        <input type="text" id="nombre" />
+
+        <label for="email">Email</label>
+        <input type="email" id="email" />
+
+        <label for="descripcion">Mensaje</label>
+        <textarea id="descripcion"></textarea>
+
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+    <div class="contacto-imagen">
+      <img src="assets/ubi.jpg" alt="Contacto AnonMusic" class="img-rounded">
+    </div>
+  </div>
+</ng-container>
+
+<app-menu *ngIf="shouldShowMenu()"></app-menu>
 <router-outlet></router-outlet>

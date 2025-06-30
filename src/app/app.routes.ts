@@ -13,12 +13,10 @@ import { SeguidoresComponent } from './components/seguidores/seguidores.componen
 import { InsertareditarseguidoresComponent } from './components/seguidores/insertareditarseguidores/insertareditarseguidores.component';
 import { NotificacionesxusuarioComponent } from './components/notificacionesxusuario/notificacionesxusuario.component';
 import { InsertareditarnotificacionxusuarioComponent } from './components/notificacionesxusuario/insertareditarnotificacionxusuario/insertareditarnotificacionxusuario.component';
+import { LandingComponent } from './components/landing/landing.component';
 
 export const routes: Routes = [
-    {
-    path:'',redirectTo:'usuarios',pathMatch:'full'
-    
-  },
+    { path: '', component: LandingComponent }, 
     {path:'usuarios', component: UsuarioComponent,
         children: [
             {path:'insertareditar', component: InsertareditarComponent},
