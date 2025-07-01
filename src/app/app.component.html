@@ -1,4 +1,4 @@
-<!-- ✅ Si estamos en la landing page -->
+<!-- landing page -->
 <ng-container *ngIf="shouldShowLanding(); else contenidoRutas">
   <div class="header">
     <nav class="nav-left">
@@ -70,13 +70,13 @@
   </div>
 </ng-container>
 
-<!-- ✅ Contenido general para otras rutas -->
+<!--Contenido general para otras rutas -->
 <ng-template #contenidoRutas>
   <app-menu *ngIf="shouldShowMenu()"></app-menu>
   <router-outlet></router-outlet>
 </ng-template>
 
-<!-- ✅ Botón flotante y chat visible en TODAS las rutas -->
+<!--boton flotante-->
 <button class="chat-float-button" *ngIf="!chatVisible" (click)="toggleChat()">💬</button>
 
 <div class="chat-window" *ngIf="chatVisible">

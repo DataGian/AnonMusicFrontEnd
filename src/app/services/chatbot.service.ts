@@ -1,5 +1,3 @@
-// src/app/services/chatbot.service.ts (o donde tengas tu servicio)
-
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -14,7 +12,7 @@ export class ChatbotService {
 
   sendMessage(mensaje: string): Observable<any> {
     const body = {
-      model: 'mistralai/mistral-7b-instruct',  // modelo gratuito
+      model: 'mistralai/mistral-7b-instruct',
       messages: [
         { role: 'system', content:  `
 Eres AnonBot, el asistente virtual oficial de AnonMusic.
@@ -43,7 +41,7 @@ Nunca compartas información sensible ni enlaces externos.
 
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer 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',  // 👈 reemplaza esto por tu API Key real
+      'Authorization': 'Bearer ----', //NO PONER A API KEY EN LOS COMMIT 
       'HTTP-Referer': 'http://localhost:4200',
       'X-Title': 'AnonMusic Chatbot'
     });
