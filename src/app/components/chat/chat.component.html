@@ -1,0 +1,12 @@
+<div class="chat-box">
+  <div class="chat-body">
+    <div *ngFor="let mensaje of mensajes">
+      <div [ngClass]="mensaje.tipo">{{ mensaje.contenido }}</div>
+    </div>
+  </div>
+
+  <div class="chat-input">
+    <input [(ngModel)]="mensajeUsuario" placeholder="Escribe tu mensaje..." />
+    <button (click)="enviarMensaje()">Enviar</button>
+  </div>
+</div>

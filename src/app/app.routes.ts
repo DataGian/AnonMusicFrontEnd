@@ -16,48 +16,73 @@ import { InsertareditarnotificacionxusuarioComponent } from './components/notifi
 import { LandingComponent } from './components/landing/landing.component';
 
 export const routes: Routes = [
-    { path: '', component: LandingComponent }, 
-    {path:'usuarios', component: UsuarioComponent,
-        children: [
-            {path:'insertareditar', component: InsertareditarComponent},
-            {path:'ediciones/:id',component: InsertareditarComponent},
-        ]
-    },
-    { path: 'notificaciones', component: NotificacionComponent,
-        children:[
-            {path: 'insertar', component: InsertareditarNotificacionComponent},
-            {path: 'ediciones/:id', component: InsertareditarNotificacionComponent} 
-        ]
-    },
-    {
-        path: 'notificacionesxusuario',component: NotificacionesxusuarioComponent ,
-        children:[
-            {path: 'insertar',component:InsertareditarnotificacionxusuarioComponent },
-            {path: 'ediciones/:id',component:InsertareditarnotificacionxusuarioComponent } 
-        ]
-    },
-    { path: 'seguidos', component: SeguidoComponent, 
-        children:[
-            {path: 'insertareditar', component: InsertareditarSeguidoComponent},
-            {path: 'ediciones/:id', component: InsertareditarSeguidoComponent} 
-        ]
-    },
-    { path: 'publicaciones', component: PublicacionComponent, 
-        children:[
-            {path: 'insertareditar', component: InsertareditarpublicacionComponent},
-            {path: 'ediciones/:id', component: InsertareditarpublicacionComponent} 
-        ]
-    },
-    { path: 'playlistsxusuario', component: PlaylistxusuarioComponent, 
-        children:[
-            {path: 'insertareditar', component: InsertareditarplaylistxusuarioComponent},
-            {path: 'ediciones/:id', component: InsertareditarplaylistxusuarioComponent} 
-        ]
-    },
-    { path: 'seguidores', component: SeguidoresComponent, 
-        children:[
-            {path: 'insertar', component: InsertareditarseguidoresComponent},
-            {path: 'ediciones/:id', component: InsertareditarseguidoresComponent} 
-        ]
-    },
+  { path: '', component: LandingComponent },
+  {
+    path: 'usuarios',
+    component: UsuarioComponent,
+    children: [
+      { path: 'insertareditar', component: InsertareditarComponent },
+      { path: 'ediciones/:id', component: InsertareditarComponent },
+    ],
+  },
+  {
+    path: 'notificaciones',
+    component: NotificacionComponent,
+    children: [
+      { path: 'insertar', component: InsertareditarNotificacionComponent },
+      { path: 'ediciones/:id', component: InsertareditarNotificacionComponent },
+    ],
+  },
+  {
+    path: 'notificacionesxusuario',
+    component: NotificacionesxusuarioComponent,
+    children: [
+      {
+        path: 'insertar',
+        component: InsertareditarnotificacionxusuarioComponent,
+      },
+      {
+        path: 'ediciones/:id',
+        component: InsertareditarnotificacionxusuarioComponent,
+      },
+    ],
+  },
+  {
+    path: 'seguidos',
+    component: SeguidoComponent,
+    children: [
+      { path: 'insertareditar', component: InsertareditarSeguidoComponent },
+      { path: 'ediciones/:id', component: InsertareditarSeguidoComponent },
+    ],
+  },
+  {
+    path: 'publicaciones',
+    component: PublicacionComponent,
+    children: [
+      { path: 'insertareditar', component: InsertareditarpublicacionComponent },
+      { path: 'ediciones/:id', component: InsertareditarpublicacionComponent },
+    ],
+  },
+  {
+    path: 'playlistsxusuario',
+    component: PlaylistxusuarioComponent,
+    children: [
+      {
+        path: 'insertareditar',
+        component: InsertareditarplaylistxusuarioComponent,
+      },
+      {
+        path: 'ediciones/:id',
+        component: InsertareditarplaylistxusuarioComponent,
+      },
+    ],
+  },
+  {
+    path: 'seguidores',
+    component: SeguidoresComponent,
+    children: [
+      { path: 'insertar', component: InsertareditarseguidoresComponent },
+      { path: 'ediciones/:id', component: InsertareditarseguidoresComponent },
+    ],
+  },
 ];

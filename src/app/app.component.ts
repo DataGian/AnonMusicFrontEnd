@@ -6,11 +6,13 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { MenuComponent } from './components/menu/menu.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
+    ChatComponent,
     RouterModule,
     RouterOutlet,
     MatToolbarModule,
@@ -18,19 +20,29 @@ import { MenuComponent } from './components/menu/menu.component';
     MatMenuModule,
     MatButtonModule,
     CommonModule,
-    MenuComponent
+    MenuComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 export class AppComponent {
   title = 'AnonMusic';
+  chatVisible = false;
 
   constructor(public router: Router) {}
+
+  toggleChat(): void {
+    this.chatVisible = !this.chatVisible;
+  }
+
+  closeChat(): void {
+    this.chatVisible = false;
+  }
+
   shouldShowMenu(): boolean {
-    // Excluir solo la ruta de la landing page ('/')
     return this.router.url !== '/';
   }
+
   shouldShowLanding(): boolean {
     const rutasExcluidas = [
       '/usuarios',

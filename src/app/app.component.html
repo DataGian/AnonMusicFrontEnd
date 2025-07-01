@@ -1,8 +1,9 @@
-<ng-container *ngIf="shouldShowLanding()">
+<!-- ✅ Si estamos en la landing page -->
+<ng-container *ngIf="shouldShowLanding(); else contenidoRutas">
   <div class="header">
     <nav class="nav-left">
       <a href="#intro">
-        <img src="assets/logo-anonmusic.png" alt="Logo de AnonMusic" class="logo-anonmusic">
+        <img src="assets/logo-anonmusic.png" alt="Logo de AnonMusic" class="logo-anonmusic" />
       </a>
       <a href="#">AnonMusic</a>
     </nav>
@@ -13,14 +14,15 @@
         <a href="#contacto">Contacto</a>
       </nav>
       <nav class="nav-login-register">
-        <a href="/usuarios">Tablas</a>
+        <a routerLink="/usuarios">Tablas</a>
       </nav>
     </div>
   </div>
 
+  <!-- Secciones -->
   <div class="section intro-offset" id="intro">
     <div class="img-left">
-      <img src="assets/inicio2.png" alt="Logo de AnonMusic" class="logo-intro">
+      <img src="assets/inicio2.png" alt="Logo de AnonMusic" class="logo-intro" />
     </div>
     <div class="content-right">
       <h1>Bienvenido a AnonMusic</h1>
@@ -33,7 +35,7 @@
   <div class="section servicios" id="servicios">
     <div class="servicio-izquierda">
       <p>
-        Publica tus composiciones de manera anónima, sin preocuparte por revelar tu identidad. En AnonMusic, valoramos la creatividad por encima del nombre. Comparte tus ideas, letras, beats o canciones con total libertad y deja que tu talento hable por ti.
+        Publica tus composiciones de manera anónima, sin preocuparte por revelar tu identidad. En AnonMusic, valoramos la creatividad por encima del nombre.
       </p>
     </div>
     <div class="servicio-imagen-derecha">
@@ -41,7 +43,7 @@
     </div>
     <div class="servicio-derecha">
       <p>
-        Puedes seguir a tus artistas favoritos y descubrir nuevas voces que comparten tu estilo musical. Personaliza tu experiencia, mantente actualizado con sus publicaciones y forma parte de una comunidad donde cada usuario es también un creador.
+        Puedes seguir a tus artistas favoritos y descubrir nuevas voces que comparten tu estilo musical.
       </p>
     </div>
     <div class="servicio-imagen-izquierda">
@@ -55,21 +57,32 @@
       <form>
         <label for="nombre">Nombre y Apellidos</label>
         <input type="text" id="nombre" />
-
         <label for="email">Email</label>
         <input type="email" id="email" />
-
         <label for="descripcion">Mensaje</label>
         <textarea id="descripcion"></textarea>
-
         <button type="submit">Enviar</button>
       </form>
     </div>
     <div class="contacto-imagen">
-      <img src="assets/ubi.jpg" alt="Contacto AnonMusic" class="img-rounded">
+      <img src="assets/ubi.jpg" alt="Contacto AnonMusic" class="img-rounded" />
     </div>
   </div>
 </ng-container>
 
-<app-menu *ngIf="shouldShowMenu()"></app-menu>
-<router-outlet></router-outlet>
+<!-- ✅ Contenido general para otras rutas -->
+<ng-template #contenidoRutas>
+  <app-menu *ngIf="shouldShowMenu()"></app-menu>
+  <router-outlet></router-outlet>
+</ng-template>
+
+<!-- ✅ Botón flotante y chat visible en TODAS las rutas -->
+<button class="chat-float-button" *ngIf="!chatVisible" (click)="toggleChat()">💬</button>
+
+<div class="chat-window" *ngIf="chatVisible">
+  <div class="chat-header">
+    <span>AnonBot</span>
+    <button class="close-button" (click)="closeChat()">✖</button>
+  </div>
+  <app-chat></app-chat>
+</div>
