@@ -1,0 +1,71 @@
+<div class="container">
+  <div style="text-align: center; margin: 6%">
+    <h1>Lista de Publicaciones</h1>
+  </div>
+
+  <div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="c1">
+        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let element">{{ element.idComentario }}</td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="c2">
+        <th mat-header-cell *matHeaderCellDef>Usuario</th>
+        <td mat-cell *matCellDef="let element">{{ element.idusuArio }}</td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="c3">
+        <th mat-header-cell *matHeaderCellDef>Contenido</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.contenido }}
+        </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="c4">
+        <th mat-header-cell *matHeaderCellDef>Publicacion</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.publicaciones.contenido }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="c5">
+        <th mat-header-cell *matHeaderCellDef class="center-cell">
+          Actualizar
+        </th>
+        <td mat-cell *matCellDef="let element" class="center-cell">
+          <button
+            mat-icon-button
+            color="primary"
+            class="edit-button"
+            [routerLink]="['ediciones', element.idComentario]"
+            matTooltip="Editar comentario"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="c6">
+        <th mat-header-cell *matHeaderCellDef class="center-cell">Eliminar</th>
+        <td mat-cell *matCellDef="let element" class="center-cell">
+          <button
+            mat-icon-button
+            color="warn"
+            class="delete-button"
+            (click)="eliminar(element.idComentario)"
+            matTooltip="Eliminar comentario"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</div>

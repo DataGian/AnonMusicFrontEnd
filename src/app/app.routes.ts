@@ -14,6 +14,8 @@ import { InsertareditarseguidoresComponent } from './components/seguidores/inser
 import { NotificacionesxusuarioComponent } from './components/notificacionesxusuario/notificacionesxusuario.component';
 import { InsertareditarnotificacionxusuarioComponent } from './components/notificacionesxusuario/insertareditarnotificacionxusuario/insertareditarnotificacionxusuario.component';
 import { LandingComponent } from './components/landing/landing.component';
+import { InsertareditarcomentarioComponent } from './components/comentario/insertareditarcomentario/insertareditarcomentario.component';
+import { ComentarioComponent } from './components/comentario/comentario.component';
 
 export const routes: Routes = [
   { path: '', component: LandingComponent },
@@ -83,6 +85,14 @@ export const routes: Routes = [
     children: [
       { path: 'insertar', component: InsertareditarseguidoresComponent },
       { path: 'ediciones/:id', component: InsertareditarseguidoresComponent },
+    ],
+  },
+  {
+    path: 'comentarios',
+    component: ComentarioComponent,
+    children: [
+      { path: 'insertareditar', component: InsertareditarcomentarioComponent },
+      { path: 'ediciones/:id', component: InsertareditarcomentarioComponent },
     ],
   },
 ];

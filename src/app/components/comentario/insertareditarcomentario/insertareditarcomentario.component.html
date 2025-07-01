@@ -1,0 +1,48 @@
+<div class="container">
+  <div style="text-align: center; margin: 5%">
+    <h1>{{ edicion ? "Actualizar Comentario" : "Registro de Comentario" }}</h1>
+  </div>
+  <div style="text-align: center; margin: 5%">
+    <form [formGroup]="form" (submit)="aceptar()">
+      <mat-form-field class="example-full-width" *ngIf="edicion">
+        <mat-label>ID</mat-label>
+        <input matInput formControlName="codigo" />
+        <mat-error *ngIf="form.get('codigo')?.hasError('required')">
+          El código es obligatorio!!
+        </mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Usuarios</mat-label>
+        <mat-select formControlName="usuarioComentario">
+          @for (food of listaUsuarios; track food) {
+          <mat-option [value]="food.idUsuario">{{ food.username }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <br />
+      <mat-form-field class="example-full-width">
+        <mat-label>Contenido</mat-label>
+        <input matInput formControlName="contenidoComentario" />
+        <mat-error
+          *ngIf="form.get('contenidoComentario')?.hasError('required')"
+        >
+          El contenido es obligatorio!!
+        </mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Publicaciones</mat-label>
+        <mat-select formControlName="publicacionComentario">
+          @for (food of listaPublicaciones; track food) {
+          <mat-option [value]="food.idPublicacion">{{
+            food.contenido
+          }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <br />
+      <button matButton="filled">Aceptar</button>
+    </form>
+  </div>
+</div>

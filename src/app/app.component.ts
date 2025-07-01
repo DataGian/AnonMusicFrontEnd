@@ -66,6 +66,9 @@ export class AppComponent {
       '/seguidores',
       '/seguidores/insertar',
       '/seguidores/ediciones',
+      '/comentarios',
+      '/comentarios/insertareditar',
+      '/comentarios/ediciones',
     ];
 
     return (
@@ -76,7 +79,8 @@ export class AppComponent {
       !this.router.url.startsWith('/seguidos/ediciones') &&
       !this.router.url.startsWith('/publicaciones/ediciones') &&
       !this.router.url.startsWith('/playlistsxusuario/ediciones') &&
-      !this.router.url.startsWith('/seguidores/ediciones')
+      !this.router.url.startsWith('/seguidores/ediciones') &&
+      !this.router.url.startsWith('/comentarios/ediciones')
     );
   }
 }
