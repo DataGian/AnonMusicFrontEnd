@@ -1,1 +1,43 @@
-<p>insertareditarreaccion works!</p>
+<div class="container">
+  <div style="text-align: center; margin: 5%">
+    <h1>{{ edicion ? "Actualizar Reacción" : "Registro de Reacción" }}</h1>
+  </div>
+  <div style="text-align: center; margin: 5%">
+    <form [formGroup]="form" (submit)="aceptar()">
+      <mat-form-field class="example-full-width" *ngIf="edicion">
+        <mat-label>ID</mat-label>
+        <input matInput formControlName="codigo" />
+        <mat-error *ngIf="form.get('codigo')?.hasError('required')">
+          El código es obligatorio!!
+        </mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Usuarios</mat-label>
+        <mat-select formControlName="usuarioReaccion">
+          @for (food of listaUsuarios; track food) {
+          <mat-option [value]="food.idUsuario">{{ food.username }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <br />
+      <mat-radio-group aria-label="Like" formControlName="tipoReaccion">
+        <mat-radio-button [value]="true">Me gusta</mat-radio-button>
+        <mat-radio-button [value]="false">No me gusta</mat-radio-button>
+      </mat-radio-group>
+      <br />
+      <mat-form-field>
+        <mat-label>Publicaciones</mat-label>
+        <mat-select formControlName="publicacionReaccion">
+          @for (food of listaPublicaciones; track food) {
+          <mat-option [value]="food.idPublicacion">{{
+            food.contenido
+          }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <br />
+      <button matButton="filled">Aceptar</button>
+    </form>
+  </div>
+</div>

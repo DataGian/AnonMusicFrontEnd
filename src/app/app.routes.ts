@@ -18,6 +18,8 @@ import { ComentarioComponent } from './components/comentario/comentario.componen
 import { seguridadGuard } from './guard/seguridad.guard';
 import { LoginComponent } from './components/login/login.component';
 import { LandingComponentng } from './components/landing/landing.component';
+import { ReaccionComponent } from './components/reaccion/reaccion.component';
+import { InsertareditarreaccionComponent } from './components/reaccion/insertareditarreaccion/insertareditarreaccion.component';
 
 
 export const routes: Routes = [
@@ -111,6 +113,14 @@ export const routes: Routes = [
     children: [
       { path: 'insertareditar', component: InsertareditarcomentarioComponent },
       { path: 'ediciones/:id', component: InsertareditarcomentarioComponent },
+    ],canActivate: [seguridadGuard ],
+  },
+  {
+    path: 'reacciones',
+    component: ReaccionComponent,
+    children: [
+      { path: 'insertareditar', component: InsertareditarreaccionComponent },
+      { path: 'ediciones/:id', component: InsertareditarreaccionComponent },
     ],canActivate: [seguridadGuard ],
   },
 ];

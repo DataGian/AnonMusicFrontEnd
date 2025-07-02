@@ -41,7 +41,8 @@ import { Comentarios } from '../../../models/comentario';
   templateUrl: './insertareditarcomentario.component.html',
   styleUrl: './insertareditarcomentario.component.css',
 })
-export class InsertareditarcomentarioComponent implements OnInit{form: FormGroup = new FormGroup({});
+export class InsertareditarcomentarioComponent implements OnInit {
+  form: FormGroup = new FormGroup({});
   comentario: Comentarios = new Comentarios();
   edicion: boolean = false;
   status: boolean = false;
@@ -85,7 +86,8 @@ export class InsertareditarcomentarioComponent implements OnInit{form: FormGroup
       this.comentario.idComentario = this.form.value.codigo;
       this.comentario.idusuArio = this.form.value.usuarioComentario;
       this.comentario.contenido = this.form.value.contenidoComentario;
-      this.comentario.publicaciones.idPublicacion = this.form.value.publicacionComentario;
+      this.comentario.publicaciones.idPublicacion =
+        this.form.value.publicacionComentario;
 
       if (this.edicion) {
         this.cS.update(this.comentario).subscribe(() => {
@@ -110,8 +112,11 @@ export class InsertareditarcomentarioComponent implements OnInit{form: FormGroup
           codigo: new FormControl(data.idComentario),
           usuarioComentario: new FormControl(data.idusuArio),
           contenidoComentario: new FormControl(data.contenido),
-          publicacionComentario: new FormControl(data.publicaciones.idPublicacion),
+          publicacionComentario: new FormControl(
+            data.publicaciones.idPublicacion
+          ),
         });
       });
     }
-  }}
+  }
+}
