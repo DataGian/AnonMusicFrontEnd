@@ -42,7 +42,7 @@ Nunca compartas información sensible ni enlaces externos.
 
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer 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', //NO PONER A API KEY EN LOS COMMIT 
+      'Authorization': 'Bearer', //NO PONER A API KEY EN LOS COMMIT 
       'HTTP-Referer': 'http://localhost:4200',
       'X-Title': 'AnonMusic Chatbot'
     });

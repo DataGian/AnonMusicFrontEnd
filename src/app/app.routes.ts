@@ -20,6 +20,8 @@ import { LoginComponent } from './components/login/login.component';
 import { LandingComponentng } from './components/landing/landing.component';
 import { ReaccionComponent } from './components/reaccion/reaccion.component';
 import { InsertareditarreaccionComponent } from './components/reaccion/insertareditarreaccion/insertareditarreaccion.component';
+import { ReportesComponent } from './components/reportes/reportes.component';
+import { Reporte5publicacionesconmascomentariosComponent } from './components/reportes/reporte5publicacionesconmascomentarios/reporte5publicacionesconmascomentarios.component';
 
 
 export const routes: Routes = [
@@ -123,4 +125,12 @@ export const routes: Routes = [
       { path: 'ediciones/:id', component: InsertareditarreaccionComponent },
     ],canActivate: [seguridadGuard ],
   },
+  {
+    path: 'reportes',component: ReportesComponent,
+    children:[
+      {
+        path: 'publicacionesconmascomentarios', component: Reporte5publicacionesconmascomentariosComponent
+      },
+     ]
+  }
 ];

@@ -35,6 +35,6 @@ export const appConfig: ApplicationConfig = {
           disallowedRoutes: ['http://localhost:8082/login/forget'],
         },
       })
-    ), provideCharts(withDefaultRegisterables())
+    ), provideCharts(withDefaultRegisterables()), provideCharts(withDefaultRegisterables())
   ],
 };

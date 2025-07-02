@@ -66,6 +66,12 @@
       <mat-icon>thumb_up</mat-icon>Reacciones
     </button>
   </div>
+  <div>
+  <button mat-button [matMenuTriggerFor]="menuReportes" class="btn-rojo">
+   <mat-icon>file_copy</mat-icon>
+   Reportes
+  </button>
+ </div>
 
   <!-- Espaciador -->
   <span class="toolbar-spacer"></span>
@@ -133,6 +139,9 @@
     Registrar
   </button>
 </mat-menu>
+<mat-menu #menuReportes="matMenu">
+  <button mat-menu-item routerLink="/reportes">Reporte de 5 publicaciones con más comentarios</button>
+ </mat-menu>
 
 <mat-menu #menuSalir="matMenu">
   <button mat-menu-item (click)="cerrar()">

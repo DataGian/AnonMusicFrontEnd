@@ -69,6 +69,7 @@ export class LandingComponentng  {
       '/comentarios',
       '/comentarios/insertareditar',
       '/comentarios/ediciones',
+      '/reportes',
     ];
 
     return (

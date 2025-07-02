@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Publicacion } from '../models/publicacion';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { PublicacionesConMasComentariosDTO } from '../models/PublicacionesConMasComentariosDTO';
 const base_url = environment.base;
 
 @Injectable({
@@ -29,13 +30,17 @@ export class PublicacionService {
   }
 
   listId(id: number) { 
-        return this.h.get<Publicacion>(`${this.url}/${id}`);
-      }
-      update(p: Publicacion) { 
-        return this.h.put<Publicacion>(`${this.url}/modificar`, p);
-      }
-      deletePublicacion(id:number) { 
-        return this.h.delete<Publicacion>(`${this.url}/${id}`);
-    
-      }
+      return this.h.get<Publicacion>(`${this.url}/${id}`);
+    }
+  update(p: Publicacion) { 
+      return this.h.put<Publicacion>(`${this.url}/modificar`, p);
+    }
+  deletePublicacion(id:number) { 
+      return this.h.delete<Publicacion>(`${this.url}/${id}`);
+    }
+
+  get5PubliconmasComentarios(): Observable<PublicacionesConMasComentariosDTO[]> {
+    return this.h.get<PublicacionesConMasComentariosDTO[]>(`${this.url}/publicacionesconmascomentarios`);
+  }
+  
 }
