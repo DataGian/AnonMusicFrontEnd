@@ -13,12 +13,27 @@ import { SeguidoresComponent } from './components/seguidores/seguidores.componen
 import { InsertareditarseguidoresComponent } from './components/seguidores/insertareditarseguidores/insertareditarseguidores.component';
 import { NotificacionesxusuarioComponent } from './components/notificacionesxusuario/notificacionesxusuario.component';
 import { InsertareditarnotificacionxusuarioComponent } from './components/notificacionesxusuario/insertareditarnotificacionxusuario/insertareditarnotificacionxusuario.component';
-import { LandingComponent } from './components/landing/landing.component';
 import { InsertareditarcomentarioComponent } from './components/comentario/insertareditarcomentario/insertareditarcomentario.component';
 import { ComentarioComponent } from './components/comentario/comentario.component';
+import { seguridadGuard } from './guard/seguridad.guard';
+import { LoginComponent } from './components/login/login.component';
+import { LandingComponentng } from './components/landing/landing.component';
+
 
 export const routes: Routes = [
-  { path: '', component: LandingComponent },
+  {
+    path: '',
+    redirectTo: 'homes',
+    pathMatch: 'full',
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path:'homes',
+    component: LandingComponentng,
+  },
   {
     path: 'usuarios',
     component: UsuarioComponent,
@@ -26,6 +41,7 @@ export const routes: Routes = [
       { path: 'insertareditar', component: InsertareditarComponent },
       { path: 'ediciones/:id', component: InsertareditarComponent },
     ],
+    canActivate: [seguridadGuard ],
   },
   {
     path: 'notificaciones',
@@ -34,6 +50,7 @@ export const routes: Routes = [
       { path: 'insertar', component: InsertareditarNotificacionComponent },
       { path: 'ediciones/:id', component: InsertareditarNotificacionComponent },
     ],
+    canActivate: [seguridadGuard ],
   },
   {
     path: 'notificacionesxusuario',
@@ -48,6 +65,7 @@ export const routes: Routes = [
         component: InsertareditarnotificacionxusuarioComponent,
       },
     ],
+    canActivate: [seguridadGuard ],
   },
   {
     path: 'seguidos',
@@ -55,7 +73,7 @@ export const routes: Routes = [
     children: [
       { path: 'insertareditar', component: InsertareditarSeguidoComponent },
       { path: 'ediciones/:id', component: InsertareditarSeguidoComponent },
-    ],
+    ],canActivate: [seguridadGuard ],
   },
   {
     path: 'publicaciones',
@@ -63,7 +81,7 @@ export const routes: Routes = [
     children: [
       { path: 'insertareditar', component: InsertareditarpublicacionComponent },
       { path: 'ediciones/:id', component: InsertareditarpublicacionComponent },
-    ],
+    ],canActivate: [seguridadGuard ],
   },
   {
     path: 'playlistsxusuario',
@@ -77,7 +95,7 @@ export const routes: Routes = [
         path: 'ediciones/:id',
         component: InsertareditarplaylistxusuarioComponent,
       },
-    ],
+    ],canActivate: [seguridadGuard ],
   },
   {
     path: 'seguidores',
@@ -85,7 +103,7 @@ export const routes: Routes = [
     children: [
       { path: 'insertar', component: InsertareditarseguidoresComponent },
       { path: 'ediciones/:id', component: InsertareditarseguidoresComponent },
-    ],
+    ],canActivate: [seguridadGuard ],
   },
   {
     path: 'comentarios',
@@ -93,6 +111,6 @@ export const routes: Routes = [
     children: [
       { path: 'insertareditar', component: InsertareditarcomentarioComponent },
       { path: 'ediciones/:id', component: InsertareditarcomentarioComponent },
-    ],
+    ],canActivate: [seguridadGuard ],
   },
 ];

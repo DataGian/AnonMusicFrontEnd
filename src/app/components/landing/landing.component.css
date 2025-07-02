@@ -1,0 +1,301 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #000000;
+  color: #333;
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Header */
+.header {
+    position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #000; /* Fondo negro sólido */
+  color: white;
+  padding: 15px 15px;
+  flex-wrap: wrap;
+
+  /* Sombra negra más notoria */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-anonmusic {
+  height: 50px;
+  width: auto;
+  border-radius: 8px;
+}
+
+.nav-left a {
+  font-size: 1.8em;
+  font-weight: bold;
+  color: #e4881d;
+}
+
+.nav-group-right {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.intro-offset {
+  margin-top: calc(1cm + 50px); /* 1cm deseado + 70px de alto del header fijo */
+}
+
+.nav-right a,
+.nav-login-register a {
+  margin: 0 10px;
+  font-size: 1.5em;
+  font-weight: 600;
+  color: #e4881d;
+  transition: color 0.3s;
+}
+
+.nav-right a:hover,
+.nav-login-register a:hover {
+  color: #cc6e17;
+}
+
+/* AÑADIDO: Evitar que la imagen de bienvenida sea tapada */
+.section:first-of-type {
+  margin-top: 130px;
+}
+
+/* Sections */
+.section {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 60px 30px;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+}
+
+#intro {
+  background-color: #f0f4f8;
+  gap: 60px;
+}
+
+.img-left,
+.contacto-imagen,
+.servicio-imagen-derecha,
+.servicio-imagen-izquierda {
+  flex: 1 1 300px;
+  padding: 20px;
+  text-align: center;
+}
+
+.logo-intro {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.img-rounded {
+  width: 100%;
+  max-width: 10000px;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.content-right,
+.servicio-derecha,
+.servicio-izquierda {
+  flex: 1 1 400px;
+  padding: 20px;
+  text-align: left;
+}
+
+.content-right h1 {
+  font-size: 2.8em;
+  margin-bottom: 20px;
+  color: #1e1e2f;
+}
+
+p {
+  font-size: 1.3em;
+  line-height: 1.8;
+  color: #444;
+}
+
+h2 {
+  color: #1e1e2f;
+  font-size: 2em;
+}
+
+/* Servicios */
+.servicios {
+  background-color: #ffffff;
+}
+
+.servicio-imagen-derecha img,
+.servicio-imagen-izquierda img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Contacto */
+#contacto {
+  background-color: #f7f9fb;
+}
+
+.contacto-form {
+  flex: 1 1 400px;
+  padding: 20px;
+}
+
+.contacto-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.contacto-form label {
+  margin-top: 15px;
+  font-weight: 600;
+}
+
+.contacto-form input,
+.contacto-form textarea {
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1em;
+}
+
+.contacto-form button {
+  margin-top: 20px;
+  padding: 12px;
+  background-color: #e4881d;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1em;
+  transition: background-color 0.3s;
+}
+
+.contacto-form button:hover {
+  background-color: #cc6e17;
+}
+
+.contacto-imagen img {
+  width: 100%;
+  max-width: 450px;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-group-right {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .content-right,
+  .servicio-derecha,
+  .servicio-izquierda {
+    text-align: center;
+  }
+
+  .nav-left a {
+    font-size: 1.4em;
+  }
+
+  .content-right h1 {
+    font-size: 2em;
+  }
+
+  p {
+    font-size: 1.1em;
+  }
+
+  .nombre-empresa {
+    color: #e4881d;
+  }
+}
+.chat-float-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #e4881d;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  font-size: 24px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  z-index: 9999;
+}
+
+.chat-float-button:hover {
+  background-color: #cc6e17;
+}
+
+.chat-window {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 350px;
+  max-height: 500px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  z-index: 9999;
+}
+
+.chat-header {
+  background-color: #e4881d;
+  color: white;
+  padding: 10px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}

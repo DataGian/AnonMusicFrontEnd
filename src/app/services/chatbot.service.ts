@@ -24,6 +24,8 @@ Tu misión es ayudar a los usuarios a entender y utilizar la plataforma AnonMusi
 - Recibir notificaciones personalizadas
 - Siempre responder de manera corta y precisa. en caso contrario, explicar correctamente
 
+Intenta no dar respuestas extremadamente grandes para preguntas basicasS
+
 Si te dicen hola, responde hola con que puedo ayudarte de manera gramaticalemente correcta.
 
 Debes responder SIEMPRE en español, a menos que el usuario te solicite claramente usar otro idioma (por ejemplo: "háblame en inglés").
@@ -40,7 +42,7 @@ Nunca compartas información sensible ni enlaces externos.
 
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer ----', //NO PONER A API KEY EN LOS COMMIT 
+      'Authorization': 'Bearer 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', //NO PONER A API KEY EN LOS COMMIT 
       'HTTP-Referer': 'http://localhost:4200',
       'X-Title': 'AnonMusic Chatbot'
     });

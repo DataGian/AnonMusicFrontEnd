@@ -1,83 +1,69 @@
-<mat-toolbar class="custom-toolbar">
+<mat-toolbar class="custom-toolbar" *ngIf="verificar()">
+
+  <!-- Logo y nombre -->
   <div class="header">
     <img
       src="assets/logo-anonmusic.png"
       alt="Logo de AnonMusic"
       class="logo-anonmusic"
     />
-    <a href="#">AnonMusic</a>
+    <a href="#" class="app-name">AnonMusic</a>
   </div>
 
+  <!-- Botón Home -->
   <div>
+    <button mat-button [routerLink]="['/homes']" style="color: white">
+      <mat-icon>home</mat-icon>Home
+    </button>
+  </div>
+
+  <!-- Botones visibles solo para Developers -->
+  <div> 
     <button mat-button [matMenuTriggerFor]="menuUsuarios" class="btn-rojo">
-      <mat-icon>person</mat-icon>
-      Usuarios
+      <mat-icon>person</mat-icon>Usuarios
     </button>
-  </div>
 
-  <div>
-    <button
-      mat-button
-      [matMenuTriggerFor]="menuNotificaciones"
-      class="btn-rojo"
-    >
-      <mat-icon>notification_important</mat-icon>
-      Notificaciones
+    <button mat-button [matMenuTriggerFor]="menuNotificaciones" class="btn-rojo">
+      <mat-icon>notification_important</mat-icon>Notificaciones
     </button>
-  </div>
 
-  <div>
-    <button
-      mat-button
-      [matMenuTriggerFor]="menuNotificacionesxUsuario"
-      class="btn-rojo"
-    >
-      <mat-icon>notification_important</mat-icon>
-      Notificaciones por usuario
+    <button mat-button [matMenuTriggerFor]="menuNotificacionesxUsuario" class="btn-rojo">
+      <mat-icon>notification_important</mat-icon>Notificaciones por usuario
     </button>
-  </div>
 
-  <div>
     <button mat-button [matMenuTriggerFor]="menuSeguidos" class="btn-rojo">
-      <mat-icon>person_add</mat-icon>
-      Seguidos
+      <mat-icon>person_add</mat-icon>Seguidos
     </button>
-  </div>
 
-  <div>
     <button mat-button [matMenuTriggerFor]="menuPublicaciones" class="btn-rojo">
-      <mat-icon>article</mat-icon>
-      Publicaciones
+      <mat-icon>article</mat-icon>Publicaciones
     </button>
-  </div>
 
-  <div>
-    <button
-      mat-button
-      [matMenuTriggerFor]="menuPlaylistxusuario"
-      class="btn-rojo"
-    >
-      <mat-icon>queue_music</mat-icon>
-      Playlist de Usuario
+    <button mat-button [matMenuTriggerFor]="menuPlaylistxusuario" class="btn-rojo">
+      <mat-icon>queue_music</mat-icon>Playlist de Usuario
     </button>
-  </div>
 
-  <div>
     <button mat-button [matMenuTriggerFor]="menuSeguidores" class="btn-rojo">
-      <mat-icon>group_add</mat-icon>
-      Seguidores
+      <mat-icon>group_add</mat-icon>Seguidores
+    </button>
+
+    <button mat-button [matMenuTriggerFor]="menuComentarios" class="btn-rojo">
+      <mat-icon>add_comment</mat-icon>Comentarios
     </button>
   </div>
 
-  <div>
-    <button mat-button [matMenuTriggerFor]="menuComentarios" class="btn-rojo">
-      <mat-icon>add_comment</mat-icon>
-      Comentarios
+  <!-- Espaciador -->
+  <span class="toolbar-spacer"></span>
+
+  <!-- Menú de usuario -->
+  <div class="right-menu">
+    <button mat-button [matMenuTriggerFor]="menuSalir">
+      <mat-icon>person</mat-icon>Usuario
     </button>
   </div>
 </mat-toolbar>
 
-<!-- MENÚS -->
+<!-- Menús desplegables -->
 <mat-menu #menuUsuarios="matMenu">
   <button mat-menu-item routerLink="/usuarios">Listar</button>
   <button mat-menu-item routerLink="/usuarios/insertareditar">Registrar</button>
@@ -90,9 +76,7 @@
 
 <mat-menu #menuNotificacionesxUsuario="matMenu">
   <button mat-menu-item routerLink="/notificacionesxusuario">Listar</button>
-  <button mat-menu-item routerLink="/notificacionesxusuario/insertar">
-    Registrar
-  </button>
+  <button mat-menu-item routerLink="/notificacionesxusuario/insertar">Registrar</button>
 </mat-menu>
 
 <mat-menu #menuSeguidos="matMenu">
@@ -102,16 +86,12 @@
 
 <mat-menu #menuPublicaciones="matMenu">
   <button mat-menu-item routerLink="/publicaciones">Listar</button>
-  <button mat-menu-item routerLink="/publicaciones/insertareditar">
-    Registrar
-  </button>
+  <button mat-menu-item routerLink="/publicaciones/insertareditar">Registrar</button>
 </mat-menu>
 
 <mat-menu #menuPlaylistxusuario="matMenu">
   <button mat-menu-item routerLink="/playlistsxusuario">Listar</button>
-  <button mat-menu-item routerLink="/playlistsxusuario/insertareditar">
-    Registrar
-  </button>
+  <button mat-menu-item routerLink="/playlistsxusuario/insertareditar">Registrar</button>
 </mat-menu>
 
 <mat-menu #menuSeguidores="matMenu">
@@ -121,7 +101,15 @@
 
 <mat-menu #menuComentarios="matMenu">
   <button mat-menu-item routerLink="/comentarios">Listar</button>
-  <button mat-menu-item routerLink="/comentarios/insertareditar">
-    Registrar
+  <button mat-menu-item routerLink="/comentarios/insertareditar">Registrar</button>
+</mat-menu>
+
+<mat-menu #menuSalir="matMenu">
+  <button mat-menu-item (click)="cerrar()">
+    <mat-icon>logout</mat-icon>
+    <span>Cerrar sesión</span>
+  </button>
+  <button mat-menu-item disabled>
+    Rol: <strong>{{ role }}</strong>
   </button>
 </mat-menu>
