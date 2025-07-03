@@ -11,7 +11,7 @@
 
   <button
     mat-fab
-    color="primary"
+    class="button-color"
     aria-label="Agregar Notificación"
     [routerLink]="['insertar']"
   >
@@ -42,7 +42,7 @@
       <mat-card-actions align="end">
         <button
           mat-icon-button
-          color="primary"
+          color="black"
           class="edit-button shadow-button"
           [routerLink]="['ediciones', element.idNotificacion]"
           matTooltip="Editar"
@@ -52,7 +52,7 @@
 
         <button
           mat-icon-button
-          color="warn"
+          color="black"
           class="edit-button shadow-button"
           (click)="eliminar(element.idNotificacion)"
           matTooltip="Eliminar"

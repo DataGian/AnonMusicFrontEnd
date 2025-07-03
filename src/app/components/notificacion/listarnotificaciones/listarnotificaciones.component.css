@@ -1,11 +1,14 @@
 .container {
   position: relative;
   padding: 2rem;
-  margin-top: 64px; /* Separación desde la navbar roja */
+  margin-top: 64px; 
+  
+  /* Separación desde la navbar roja */
 }
 
 /* Botón flotante arriba a la derecha */
 .add-button-wrapper {
+  color:#f4b66e;
   position: absolute;
   top: -2rem;
   right: 2rem;
@@ -15,12 +18,15 @@
   gap: 10px;
   z-index: 10;
 }
+.button-color{
+  background-color: #f4b66e;
+}
 
 .add-button-text {
   opacity: 0;
   transform: translateX(-10px); /* ⬅ SE MUEVE DESDE LA IZQUIERDA */
   transition: opacity 0.3s ease, transform 0.3s ease;
-  background-color: #3f51b5;
+  background-color: #f4b66e;
   color: white;
   padding: 6px 12px;
   border-radius: 20px;
@@ -41,7 +47,8 @@
   flex-wrap: wrap;
   gap: 16px;
   justify-content: center;
-}
+  
+  }
 
 /* Tarjetas */
 .notificacion-card {
@@ -50,6 +57,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background-color:#fff9f2;  
 }
 
 /* Botones sin sombra */
