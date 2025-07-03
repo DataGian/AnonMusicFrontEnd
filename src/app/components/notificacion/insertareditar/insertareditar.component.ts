@@ -12,10 +12,11 @@ import { CommonModule } from '@angular/common';
 import { Notificacion } from '../../../models/notificacion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-insertareditar',
-  imports: [CommonModule,ReactiveFormsModule, MatFormFieldModule,MatInputModule],
+  imports: [CommonModule,ReactiveFormsModule, MatFormFieldModule,MatInputModule,MatSelectModule],
   templateUrl: './insertareditar.component.html',
   styleUrl: './insertareditar.component.css',
 })
@@ -24,6 +25,13 @@ export class InsertareditarNotificacionComponent implements OnInit {
   form: FormGroup = new FormGroup({});
   id: number = 0;
   edicion: boolean = false;
+  tipos: { value: string; viewValue: string }[] = [
+    { value: 'Comentario', viewValue: 'Comentario' },
+    { value: 'Me gusta', viewValue: 'Me gusta' },
+    { value: 'Mencion', viewValue: 'Mencion' },
+    { value: 'Compartir', viewValue: 'Compartir' },
+    { value: 'Seguido', viewValue: 'Seguido' },
+  ];
 
   constructor(
     private nS: NotificacionService,

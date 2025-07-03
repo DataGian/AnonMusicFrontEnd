@@ -1,23 +1,25 @@
+/* === Encabezado fijo === */
 .custom-toolbar {
- background-color: rgb(253, 41, 13);
-}
-.btn-rojo {
- background-color: rgb(0, 0, 0);
- border-radius: 4px;
- margin: 4px;
- border: none;
-}
-.custom-toolbar button,
-.custom-toolbar mat-icon {
- color: #e4881d;
-}.custom-toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background-color: #000;
+  color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #000; /* fondo negro si deseas */
-  color: white;
+  z-index: 1000;
+  padding: 0 16px;
 }
 
+.custom-toolbar button,
+.custom-toolbar mat-icon {
+  color: #e4881d;
+}
+
+/* Centrado del logo y nombre */
 .toolbar-center {
   position: absolute;
   left: 50%;
@@ -38,39 +40,28 @@
   color: orange;
 }
 
-
-.header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+/* Contenido de la página (debajo del toolbar) */
+.contenido {
+  padding-top: 64px; /* para que no quede tapado por la barra fija */
+  padding-left: 16px;
+  padding-right: 16px;
 }
 
-
-
-.btn-rojo {
-  color: #e4881d;
-}
-
-a {
-  text-decoration: none;
-  color: #e4881d;
-  font-weight: bold;
-  font-size: 18px;
-}
+/* Menú desplegable flotante debajo del toolbar */
 .menu-desplegable {
-  position: absolute;
-  top: 64px; /* Justo debajo del toolbar */
-  left: 10px; /* Un poco separado del borde izquierdo */
-  background-color: rgba(33, 33, 33, 0.95); /* Semi-transparente */
+  position: fixed;
+  top: 64px;
+  left: 10px;
+  background-color: rgba(33, 33, 33, 0.95);
   border-radius: 10px;
   padding: 10px 15px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
   display: flex;
   flex-direction: column;
-  z-index: 1000;
+  z-index: 999;
   animation: desplegar 300ms ease-in-out;
-  min-width: 220px; /* Ancho mínimo deseado */
-  max-width: 300px; /* Para que no crezca demasiado */
+  min-width: 220px;
+  max-width: 300px;
 }
 
 .menu-desplegable button {
@@ -94,3 +85,18 @@ a {
   }
 }
 
+/* Estilos generales */
+.btn-rojo {
+  background-color: black;
+  color: #e4881d;
+  border-radius: 4px;
+  margin: 4px;
+  border: none;
+}
+
+a {
+  text-decoration: none;
+  color: #e4881d;
+  font-weight: bold;
+  font-size: 18px;
+}

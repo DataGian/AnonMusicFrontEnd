@@ -3,7 +3,7 @@ mat-form-field {
 }
 
 button[matButton="filled"] {
-  background-color: rgb(253, 41, 13);
+  background-color:#e4881d;
 
   color: white;
 
@@ -19,6 +19,14 @@ button[matButton="filled"] {
   transition: background-color 0.3s ease;
 
   width: 60%;
+}
+
+h1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #E4881D;
+  margin-bottom: 2rem;
+  padding-top: 5%;
 }
 
 button[matButton="filled"]:hover {
