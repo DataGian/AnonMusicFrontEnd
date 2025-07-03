@@ -22,6 +22,10 @@ import { ReaccionComponent } from './components/reaccion/reaccion.component';
 import { InsertareditarreaccionComponent } from './components/reaccion/insertareditarreaccion/insertareditarreaccion.component';
 import { ReportesComponent } from './components/reportes/reportes.component';
 import { Reporte5publicacionesconmascomentariosComponent } from './components/reportes/reporte5publicacionesconmascomentarios/reporte5publicacionesconmascomentarios.component';
+import { MusicaComponent } from './components/musica/musica.component';
+import { InsertareditarmusicaComponent } from './components/musica/insertareditarmusica/insertareditarmusica.component';
+import { RecomendacionComponent } from './components/recomendacion/recomendacion.component';
+import { InsertareditarrecomendacionComponent } from './components/recomendacion/insertareditarrecomendacion/insertareditarrecomendacion.component';
 
 
 export const routes: Routes = [
@@ -132,5 +136,21 @@ export const routes: Routes = [
         path: 'publicacionesconmascomentarios', component: Reporte5publicacionesconmascomentariosComponent
       },
      ]
-  }
+  },
+  {
+    path: 'musicas',
+    component: MusicaComponent,
+    children: [
+      { path: 'insertareditar', component: InsertareditarmusicaComponent },
+      { path: 'ediciones/:id', component: InsertareditarmusicaComponent },
+    ],
+  },
+  {
+    path: 'recomendacion',
+    component: RecomendacionComponent,
+    children: [
+      { path: 'insertareditar', component: InsertareditarrecomendacionComponent },
+      { path: 'ediciones/:id', component: InsertareditarrecomendacionComponent },
+    ],
+  },
 ];

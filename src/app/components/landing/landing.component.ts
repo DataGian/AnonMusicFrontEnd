@@ -70,6 +70,12 @@ export class LandingComponentng  {
       '/comentarios/insertareditar',
       '/comentarios/ediciones',
       '/reportes',
+      '/musicas',
+      '/musicas/insertareditar',
+      '/musicas/ediciones',
+      '/recomendacion',
+      '/recomendacion/insertareditar',
+      '/recomendacion/ediciones',
     ];
 
     return (
@@ -81,7 +87,9 @@ export class LandingComponentng  {
       !this.router.url.startsWith('/publicaciones/ediciones') &&
       !this.router.url.startsWith('/playlistsxusuario/ediciones') &&
       !this.router.url.startsWith('/seguidores/ediciones') &&
-      !this.router.url.startsWith('/comentarios/ediciones')
+      !this.router.url.startsWith('/comentarios/ediciones')&&
+      !this.router.url.startsWith('/musicas/ediciones') &&
+      !this.router.url.startsWith('/recomendacion/ediciones')
     );
   }
 }

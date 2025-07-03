@@ -1,0 +1,85 @@
+<div class="container">
+  <div style="text-align: center; margin: 6%">
+    <h1>Lista de Musicas</h1>
+  </div>
+
+  <div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="c1">
+        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let element">{{ element.idMusica }}</td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="c2">
+        <th mat-header-cell *matHeaderCellDef>Archivo</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.archivo }}
+        </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="c3">
+        <th mat-header-cell *matHeaderCellDef>Título</th>
+        <td mat-cell *matCellDef="let element">{{ element.nombre }}</td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="c4">
+        <th mat-header-cell *matHeaderCellDef>Fecha de publicación</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.fecha | date : "dd/MM/yyyy" }}
+        </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="c5">
+        <th mat-header-cell *matHeaderCellDef>Privacidad</th>
+        <td mat-cell *matCellDef="let element">{{ element.privacidad?'Privado':'Publico'}}</td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="c6">
+        <th mat-header-cell *matHeaderCellDef>Usuario</th>
+        <td mat-cell *matCellDef="let element">{{ element.usuario.username }}</td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="c7">
+        <th mat-header-cell *matHeaderCellDef>Usado</th>
+        <td mat-cell *matCellDef="let element">{{ element.usado?'Música existente':'Música original'}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="c8">
+      <th mat-header-cell *matHeaderCellDef class="center-cell">Actualizar</th>
+      <td mat-cell *matCellDef="let element" class="center-cell">
+        <button mat-icon-button
+        color="primary"
+        class="edit-button"
+        [routerLink]="['ediciones', element.idMusica]"
+        matTooltip="Editar musica">
+  <mat-icon>edit</mat-icon>
+</button>
+
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="c9">
+      <th mat-header-cell *matHeaderCellDef class="center-cell">Eliminar</th>
+      <td mat-cell *matCellDef="let element" class="center-cell">
+        <button mat-icon-button
+        color="warn"
+        class="delete-button"
+        (click)="eliminar(element.idMusica)"
+        matTooltip="Eliminar musica">
+        <mat-icon>delete</mat-icon>
+        </button>
+
+      </td>
+    </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</div>

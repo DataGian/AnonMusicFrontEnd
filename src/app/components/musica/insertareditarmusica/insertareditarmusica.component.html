@@ -1,0 +1,82 @@
+<div class="container">
+  <div style="text-align: center; margin: 5%">
+    <h1>{{ edicion ? 'Actualizar Musicas' : 'Registro de Musicas' }}</h1>
+    </div>
+  <div style="text-align: center;margin: 5%;">
+    <form [formGroup]="form" (submit)="aceptar()">
+      <mat-form-field class="example-full-width" *ngIf="edicion">
+        <mat-label>ID</mat-label>
+        <input matInput formControlName="codigo" />
+        <mat-error *ngIf="form.get('codigo')?.hasError('required')">
+          El código es obligatorio!!
+        </mat-error>
+      </mat-form-field>
+
+      <br />
+      <mat-form-field class="example-full-width">
+        <mat-label>Archivo</mat-label>
+        <input matInput formControlName="archivo" />
+        <mat-error *ngIf="form.get('archivo')?.hasError('required')">
+          El archivo es obligatorio!!
+        </mat-error>
+      </mat-form-field>
+
+      <br />
+      <mat-form-field class="example-full-width">
+        <mat-label>Título</mat-label>
+        <input matInput formControlName="nombre" />
+        <mat-error *ngIf="form.get('nombre')?.hasError('required')">
+          El Título es obligatorio!!
+        </mat-error>
+      </mat-form-field>
+
+      <br>
+      <mat-form-field>
+        <mat-label>Fecha de publicación:</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="fecha" />
+        <mat-hint>DD/MM/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="form.get('fecha')?.hasError('required')">
+          La fecha es obligatoria!!
+        </mat-error>
+      </mat-form-field>
+
+      <br />
+      <mat-radio-group
+        aria-label="Privacidad"
+        formControlName="privacidad"
+        [(ngModel)]="status"
+      >
+        <mat-radio-button [value]="true">Privado</mat-radio-button>
+        <mat-radio-button [value]="false">Público</mat-radio-button>
+      </mat-radio-group>
+
+      <br />
+      <mat-form-field>
+        <mat-label>Usuarios</mat-label>
+        <mat-select formControlName="usuario">
+          @for (food of listaUsuarios; track food) {
+          <mat-option [value]="food.idUsuario">{{ food.username }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <br />
+      <mat-radio-group
+        aria-label="Usado"
+        formControlName="usado"
+        [(ngModel)]="status"
+      >
+        <mat-radio-button [value]="true">Música existente</mat-radio-button>
+        <mat-radio-button [value]="false">Música original</mat-radio-button>
+      </mat-radio-group>
+
+      <br />
+      <button matButton="filled">Aceptar</button>
+    </form>
+  </div>
+</div>
