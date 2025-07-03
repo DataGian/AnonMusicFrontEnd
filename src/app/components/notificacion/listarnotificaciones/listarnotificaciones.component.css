@@ -1,85 +1,76 @@
+/* Asegura que el contenido no quede tapado por el toolbar */
 .container {
-  position: relative;
   padding: 2rem;
-  margin-top: 64px; 
-  
-  /* Separación desde la navbar roja */
+  padding-top: 96px; /* Ajusta si tu toolbar es más alta */
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* Botón flotante arriba a la derecha */
+/* Botón flotante con texto que aparece al pasar el mouse */
 .add-button-wrapper {
-  color:#f4b66e;
   position: absolute;
-  top: -2rem;
+  top: 0;
   right: 2rem;
-  transform: translateX(50%);
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 0.5rem;
   z-index: 10;
-}
-.button-color{
-  background-color: #f4b66e;
 }
 
 .add-button-text {
   opacity: 0;
-  transform: translateX(-10px); /* ⬅ SE MUEVE DESDE LA IZQUIERDA */
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  background-color: #f4b66e;
-  color: white;
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 14px;
-  white-space: nowrap;
-  pointer-events: none;
+  transition: opacity 0.3s ease;
+  font-weight: bold;
+  color: #e4881d;
 }
 
 .add-button-text.visible {
   opacity: 1;
-  transform: translateX(0); /* ⬅ SE POSICIONA NORMAL */
 }
 
+h1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #E4881D;
+  margin-bottom: 2rem;
+}
+
+.button-color {
+  background-color: #e4881d;
+  color: white;
+}
+
+.button-color:hover {
+  background-color: #d47712;
+}
 
 /* Contenedor de tarjetas */
 .cards-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  justify-content: center;
-  
-  }
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
 
-/* Tarjetas */
+/* Estilo para cada tarjeta */
 .notificacion-card {
-  width: 300px;
+  border-left: 5px solid #e4881d;
+  border-radius: 12px;
   padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background-color:#fff9f2;  
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Botones sin sombra */
-.shadow-button {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  background-color: transparent;
-  box-shadow: none;
-  border: none;
+.notificacion-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
-.shadow-button:hover {
-  box-shadow: none;
-  transform: none;
+/* Botones de acción */
+.edit-button {
+  color: #e4881d;
+  transition: transform 0.2s ease;
 }
 
-/* Icono */
-mat-icon {
-  font-size: 20px;
+.edit-button:hover {
+  transform: scale(1.1);
 }

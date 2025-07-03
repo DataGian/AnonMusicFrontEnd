@@ -21,10 +21,10 @@ const lService = inject(LoginService);
   const url = state.url;
 
   if (
-    rol === 'Tester' &&
+    rol === 'Developer' &&
     (
       url.includes('/notificaciones') ||
-      url.includes('/seguidos') ||
+            url.includes('/seguidos') ||
       url.includes('/seguidores')
     )
   ) {

@@ -1,5 +1,5 @@
 <div class="container">
-  <div style="text-align: center; margin: 5%">
+  <div class="contenido" style="text-align: center; margin: 5%">
     <h1>{{ edicion ? 'Actualizar Publicaciones' : 'Registro de Publicaciones' }}</h1>
     </div>
   <div style="text-align: center;margin: 5%;">
@@ -49,9 +49,11 @@
       </mat-radio-group>
       <br />
       <mat-form-field class="example-full-width">
-        <mat-label>Contenido</mat-label>
-        <input matInput formControlName="contenido" />
-        <mat-error *ngIf="form.get('contenido')?.hasError('required')">
+    <mat-label>Contenido</mat-label>
+    <textarea matInput formControlName="contenido"></textarea>
+        <mat-error
+          *ngIf="form.get('contenido')?.hasError('required')"
+        >
           El contenido es obligatorio!!
         </mat-error>
       </mat-form-field>
