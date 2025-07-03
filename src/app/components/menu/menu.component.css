@@ -10,17 +10,18 @@
 .custom-toolbar button,
 .custom-toolbar mat-icon {
  color: #e4881d;
-}
-.custom-toolbar {
-  background-color: #000000;
-  color: #e4881d;
+}.custom-toolbar {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
+  align-items: center;
+  background-color: #000; /* fondo negro si deseas */
+  color: white;
 }
 
-.header {
+.toolbar-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   align-items: center;
   gap: 10px;
@@ -30,6 +31,21 @@
   height: 40px;
   width: auto;
 }
+
+.app-name {
+  font-size: 20px;
+  font-weight: bold;
+  color: orange;
+}
+
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+
 
 .btn-rojo {
   color: #e4881d;
@@ -41,3 +57,40 @@ a {
   font-weight: bold;
   font-size: 18px;
 }
+.menu-desplegable {
+  position: absolute;
+  top: 64px; /* Justo debajo del toolbar */
+  left: 10px; /* Un poco separado del borde izquierdo */
+  background-color: rgba(33, 33, 33, 0.95); /* Semi-transparente */
+  border-radius: 10px;
+  padding: 10px 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  animation: desplegar 300ms ease-in-out;
+  min-width: 220px; /* Ancho mínimo deseado */
+  max-width: 300px; /* Para que no crezca demasiado */
+}
+
+.menu-desplegable button {
+  color: white;
+  justify-content: flex-start;
+  text-align: left;
+  width: 100%;
+  margin: 4px 0;
+}
+
+@keyframes desplegar {
+  0% {
+    opacity: 0;
+    transform: scaleY(0.9);
+    transform-origin: top;
+  }
+  100% {
+    opacity: 1;
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+}
+
