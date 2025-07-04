@@ -8,6 +8,9 @@ import { Musica } from '../../../models/musica';
 import { MusicaService } from '../../../services/musica.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule, MatLabel } from '@angular/material/input';
+
 
 @Component({
   selector: 'app-listarmusica',
@@ -17,7 +20,10 @@ import { MatSort } from '@angular/material/sort';
     MatButtonModule,
     MatIconModule,
     RouterLink,
-    MatPaginator
+    MatPaginator,
+    MatFormFieldModule, 
+    MatInputModule, 
+    MatLabel
   ],
   templateUrl: './listarmusica.component.html',
   styleUrl: './listarmusica.component.css'
@@ -39,16 +45,33 @@ dataSource: MatTableDataSource<Musica> = new MatTableDataSource();
   @ViewChild(MatSort) sort!: MatSort;
   constructor(private mS:MusicaService){}
   ngOnInit(): void {
-    this.mS.list().subscribe((data) => {
-      this.dataSource.data = data;
-    });
-    this.mS.getList().subscribe((data) => {
-      this.dataSource.data = data;
-    });
+  this.mS.list().subscribe((data) => {
+    this.dataSource = new MatTableDataSource(data);
+
+    this.dataSource.filterPredicate = (musica: Musica, filtro: string) => {
+      const privacidad = musica.privacidad ? 'privado' : 'publico';
+      const usado = musica.usado ? 'sí' : 'no';
+      const dataStr = `${musica.idMusica} ${musica.archivo} ${musica.nombre} ${privacidad} ${usado} ${musica.usuario?.username || ''}`.toLowerCase();
+      return dataStr.includes(filtro);
+    };
+  });
+}
+
+ngAfterViewInit(): void {
+  this.dataSource.paginator = this.paginator;
+  this.dataSource.sort = this.sort;
+}
+
+
+  filtrar(event: Event): void {
+    const filtro = (event.target as HTMLInputElement).value.trim().toLowerCase();
+    this.dataSource.filter = filtro;
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
-  ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator;
-  }
+
 
   eliminar(id: number) {
     this.mS.deleteMusica(id).subscribe(() => {

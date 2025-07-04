@@ -12,6 +12,10 @@ import { ReaccionService } from '../../../services/reaccion.service';
 import { Reacciones } from '../../../models/reaccion';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule, MatLabel } from '@angular/material/input';
+
+
 @Component({
   selector: 'app-listarreaccion',
   imports: [
@@ -20,7 +24,10 @@ import { MatSort } from '@angular/material/sort';
     MatButtonModule,
     MatIconModule,
     RouterLink,
-    MatPaginator
+    MatPaginator,
+    MatFormFieldModule, 
+    MatInputModule, 
+    MatLabel
   ],
   templateUrl: './listarreaccion.component.html',
   styleUrl: './listarreaccion.component.css',
@@ -40,17 +47,31 @@ export class ListarreaccionComponent implements OnInit, AfterViewInit{
   @ViewChild(MatSort) sort!: MatSort;
   constructor(private rS: ReaccionService) {}
   ngOnInit(): void {
-    this.rS.list().subscribe((data) => {
-      this.dataSource.data = data;
-    });
-    this.rS.getList().subscribe((data) => {
-      this.dataSource.data = data;
-    });
+  this.rS.list().subscribe((data) => {
+    this.dataSource = new MatTableDataSource(data);
+
+    this.dataSource.filterPredicate = (reaccion: Reacciones, filtro: string) => {
+      const dataStr = `${reaccion.idReacciones} ${reaccion.publicaciones?.contenido || ''}`.toLowerCase();
+      return dataStr.includes(filtro);
+    };
+  });
+}
+
+ngAfterViewInit(): void {
+  this.dataSource.paginator = this.paginator;
+  this.dataSource.sort = this.sort;
+}
+
+
+  filtrar(event: Event): void {
+    const filtro = (event.target as HTMLInputElement).value.trim().toLowerCase();
+    this.dataSource.filter = filtro;
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 
-  ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator;
-  }
 
   eliminar(id: number) {
     this.rS.deleteReaccion(id).subscribe(() => {

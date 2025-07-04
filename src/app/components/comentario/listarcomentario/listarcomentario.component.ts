@@ -12,6 +12,9 @@ import { ComentarioService } from '../../../services/comentario.service';
 import { Comentarios } from '../../../models/comentario';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule, MatLabel } from '@angular/material/input';
+
 @Component({
   selector: 'app-listarcomentario',
   imports: [
@@ -20,7 +23,10 @@ import { MatSort } from '@angular/material/sort';
     MatButtonModule,
     MatIconModule,
     RouterLink,
-    MatPaginator
+    MatPaginator,
+    MatFormFieldModule, 
+    MatInputModule, 
+    MatLabel
   ],
   templateUrl: './listarcomentario.component.html',
   styleUrl: './listarcomentario.component.css',
@@ -40,11 +46,24 @@ export class ListarcomentarioComponent implements OnInit,AfterViewInit {
   constructor(private cS: ComentarioService) {}
   ngOnInit(): void {
     this.cS.list().subscribe((data) => {
-      this.dataSource.data = data;
+      this.dataSource = new MatTableDataSource(data); // Asignamos una nueva instancia
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+  
+      this.dataSource.filterPredicate = (comentario: Comentarios, filtro: string) => {
+        const dataStr = `${comentario.idComentario} ${comentario.contenido} ${comentario.publicaciones?.contenido || ''}`.toLowerCase();
+        return dataStr.includes(filtro);
+      };
     });
-    this.cS.getList().subscribe((data) => {
-      this.dataSource.data = data;
-    });
+  }
+
+  filtrar(event: Event): void {
+    const filtro = (event.target as HTMLInputElement).value.trim().toLowerCase();
+    this.dataSource.filter = filtro;
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
