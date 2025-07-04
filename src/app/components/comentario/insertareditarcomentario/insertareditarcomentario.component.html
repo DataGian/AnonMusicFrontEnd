@@ -22,8 +22,8 @@
       </mat-form-field>
       <br />
       <mat-form-field class="example-full-width">
-        <mat-label>Contenido</mat-label>
-        <input matInput formControlName="contenidoComentario" />
+    <mat-label>Contenido</mat-label>
+    <textarea matInput formControlName="contenidoComentario"></textarea>
         <mat-error
           *ngIf="form.get('contenidoComentario')?.hasError('required')"
         >
