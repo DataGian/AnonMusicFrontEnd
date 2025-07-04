@@ -8,10 +8,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule, MatLabel } from '@angular/material/input';
+
 
 @Component({
   selector: 'app-listarplaylistxusuario',
-  imports: [MatTableModule, CommonModule, MatButtonModule, MatIconModule, RouterLink, MatPaginator],
+  imports: [MatTableModule, CommonModule, MatButtonModule, MatIconModule, RouterLink, MatPaginator, MatFormFieldModule, MatInputModule, MatLabel],
   templateUrl: './listarplaylistxusuario.component.html',
   styleUrl: './listarplaylistxusuario.component.css'
 })
@@ -25,11 +28,23 @@ export class ListarplaylistxusuarioComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.pxS.list().subscribe((data) => {
-      this.dataSource.data = data;
+      this.dataSource = new MatTableDataSource(data); // Asignamos una nueva instancia
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+  
+      this.dataSource.filterPredicate = (playlistsxusuario: PlaylistxUsuario, filtro: string) => {
+        const dataStr = `${playlistsxusuario.idPlaylistsXUsuario} ${playlistsxusuario.archivo} ${playlistsxusuario.nombre} ${playlistsxusuario.usuarios?.username || ''}`.toLowerCase();
+        return dataStr.includes(filtro);
+      };
     });
-    this.pxS.getList().subscribe((data) => {
-      this.dataSource.data = data;
-    });
+  }
+  filtrar(event: Event): void {
+    const filtro = (event.target as HTMLInputElement).value.trim().toLowerCase();
+    this.dataSource.filter = filtro;
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;

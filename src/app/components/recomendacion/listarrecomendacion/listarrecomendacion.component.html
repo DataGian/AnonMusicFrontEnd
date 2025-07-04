@@ -2,7 +2,12 @@
   <div style="text-align: center; margin: 6%">
     <h1>Lista de Recomendaciones</h1>
   </div>
-
+<div style="margin: 1rem 0">
+  <mat-form-field appearance="outline">
+  <mat-label>Buscar recomendaciones</mat-label>
+  <input matInput (keyup)="filtrar($event)" placeholder="Buscar..." />
+</mat-form-field>
+</div>
   <div>
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       <ng-container matColumnDef="c1">

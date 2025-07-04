@@ -8,11 +8,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule, MatLabel } from '@angular/material/input';
 
 
 @Component({
   selector: 'app-listarseguidores',
-  imports: [RouterLink,CommonModule,MatTableModule, RouterLink, MatIconModule, MatButtonModule, MatIconModule, MatPaginator],
+  imports: [RouterLink,CommonModule,MatTableModule, RouterLink, MatIconModule, MatButtonModule, MatIconModule, MatPaginator, MatFormFieldModule, MatInputModule, MatLabel],
   templateUrl: './listarseguidores.component.html',
   styleUrl: './listarseguidores.component.css'
 })
@@ -28,11 +30,24 @@ export class ListarseguidoresComponent implements OnInit, AfterViewInit{
 
   ngOnInit(): void {
     this.sS.list().subscribe((data) => {
-      this.dataSource.data = data;
+      this.dataSource = new MatTableDataSource(data); // Asignamos una nueva instancia
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+  
+      this.dataSource.filterPredicate = (seguidor: Seguidores, filtro: string) => {
+        const dataStr = `${seguidor.idSeguidores} ${seguidor.cantidad} ${seguidor.usuario?.username || ''}`.toLowerCase();
+        return dataStr.includes(filtro);
+      };
     });
-    this.sS.getList().subscribe((data) => {
-      this.dataSource.data = data;
-    });
+  }
+
+  filtrar(event: Event): void {
+    const filtro = (event.target as HTMLInputElement).value.trim().toLowerCase();
+    this.dataSource.filter = filtro;
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 
   ngAfterViewInit(): void {

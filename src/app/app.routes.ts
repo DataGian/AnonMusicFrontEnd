@@ -146,7 +146,7 @@ export const routes: Routes = [
     ],
   },
   {
-    path: 'recomendacion',
+    path: 'recomendaciones',
     component: RecomendacionComponent,
     children: [
       { path: 'insertareditar', component: InsertareditarrecomendacionComponent },

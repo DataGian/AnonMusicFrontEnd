@@ -2,7 +2,16 @@
   <div style="text-align: center; margin: 6%">
     <h1>Lista de Seguidores</h1>
   </div>
-
+ <div style="margin: 1rem 0">
+  <mat-form-field appearance="outline">
+    <mat-label>Buscar seguidores</mat-label>
+    <input
+      matInput
+      (keyup)="filtrar($event)"
+      placeholder="Buscar por ID, cantidad o usuario"
+    />
+  </mat-form-field>
+</div>
   <div>
     <table
       mat-table

@@ -9,7 +9,7 @@ const base_url = environment.base;
   providedIn: 'root'
 })
 export class RecomendacionService {
-private url = `${base_url}/Recomendaciones`;
+private url = `${base_url}/recomendaciones`;
   private listaCambio = new Subject<Recomendaciones[]>();
   constructor(private h: HttpClient) { }
 

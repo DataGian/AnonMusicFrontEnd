@@ -9,7 +9,7 @@
 
 h1 {
   font-size: 2.2em;
-  color: #2c387e;
+  color: #E4881D;
   margin-bottom: 30px;
   font-weight: 500;
   letter-spacing: 0.5px;
@@ -24,7 +24,7 @@ table.mat-table {
 }
 
 .mat-header-cell {
-  background-color: #3f51b5;
+  background-color:#E4881D;
   color: #ffffff;
   font-weight: 600;
   text-align: center;
@@ -43,7 +43,7 @@ table.mat-table {
   font-size: 0.95rem;
   padding: 12px;
   border-bottom: 1px solid #e0e0e0;
-  color: #6523f2;
+  color: #E4881D;
 }
 
 .center-cell {
@@ -107,7 +107,7 @@ button[matbutton]:hover {
 }
 
 .edit-button:hover {
-  background-color: #407bd4;
+  background-color: #000000;
   transform: scale(1.1);
 }
 .delete-button {
@@ -126,5 +126,5 @@ button[matbutton]:hover {
   transform: scale(1.1);
 }
   mat-icon {
-  color: #5f4bf8;
+  color: #000000;
 }
