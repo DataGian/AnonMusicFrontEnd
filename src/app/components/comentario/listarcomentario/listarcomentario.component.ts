@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import {
   MatTable,
   MatTableDataSource,
@@ -10,6 +10,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 import { ComentarioService } from '../../../services/comentario.service';
 import { Comentarios } from '../../../models/comentario';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 @Component({
   selector: 'app-listarcomentario',
   imports: [
@@ -18,11 +20,12 @@ import { Comentarios } from '../../../models/comentario';
     MatButtonModule,
     MatIconModule,
     RouterLink,
+    MatPaginator
   ],
   templateUrl: './listarcomentario.component.html',
   styleUrl: './listarcomentario.component.css',
 })
-export class ListarcomentarioComponent implements OnInit {
+export class ListarcomentarioComponent implements OnInit,AfterViewInit {
   dataSource: MatTableDataSource<Comentarios> = new MatTableDataSource();
   displayedColumns: string[] = [
     'c1',
@@ -32,16 +35,20 @@ export class ListarcomentarioComponent implements OnInit {
     'c5',
     'c6'
   ];
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
   constructor(private cS: ComentarioService) {}
   ngOnInit(): void {
     this.cS.list().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
+      this.dataSource.data = data;
     });
     this.cS.getList().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
+      this.dataSource.data = data;
     });
   }
-
+  ngAfterViewInit(): void {
+    this.dataSource.paginator = this.paginator;
+  }
   eliminar(id: number) {
     this.cS.deleteComentario(id).subscribe(() => {
       this.cS.list().subscribe((data) => {

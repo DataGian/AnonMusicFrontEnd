@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import {
   MatTable,
   MatTableDataSource,
@@ -10,6 +10,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 import { ReaccionService } from '../../../services/reaccion.service';
 import { Reacciones } from '../../../models/reaccion';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 @Component({
   selector: 'app-listarreaccion',
   imports: [
@@ -18,11 +20,12 @@ import { Reacciones } from '../../../models/reaccion';
     MatButtonModule,
     MatIconModule,
     RouterLink,
+    MatPaginator
   ],
   templateUrl: './listarreaccion.component.html',
   styleUrl: './listarreaccion.component.css',
 })
-export class ListarreaccionComponent implements OnInit{
+export class ListarreaccionComponent implements OnInit, AfterViewInit{
   dataSource: MatTableDataSource<Reacciones> = new MatTableDataSource();
   displayedColumns: string[] = [
     'c1',
@@ -32,14 +35,21 @@ export class ListarreaccionComponent implements OnInit{
     'c5',
     'c6'
   ];
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
   constructor(private rS: ReaccionService) {}
   ngOnInit(): void {
     this.rS.list().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
+      this.dataSource.data = data;
     });
     this.rS.getList().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
+      this.dataSource.data = data;
     });
+  }
+
+  ngAfterViewInit(): void {
+    this.dataSource.paginator = this.paginator;
   }
 
   eliminar(id: number) {
