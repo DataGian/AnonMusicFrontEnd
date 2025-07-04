@@ -14,17 +14,19 @@
 
       <br />
       <mat-form-field class="example-full-width">
-        <mat-label>Contenido</mat-label>
-        <input matInput formControlName="contenido" />
-        <mat-error *ngIf="form.get('contenido')?.hasError('required')">
-          El Contenido es obligatorio!!
+    <mat-label>Contenido</mat-label>
+    <textarea matInput formControlName="contenido"></textarea>
+        <mat-error
+          *ngIf="form.get('contenido')?.hasError('required')"
+        >
+          El contenido es obligatorio!!
         </mat-error>
       </mat-form-field>
 
       <br />
       <mat-form-field class="example-full-width">
         <mat-label>Razon</mat-label>
-        <input matInput formControlName="razon" />
+        <textarea matInput formControlName="razon" ></textarea>
         <mat-error *ngIf="form.get('razon')?.hasError('required')">
           La razon es obligatorio!!
         </mat-error>
