@@ -74,3 +74,15 @@ h1 {
 .edit-button:hover {
   transform: scale(1.1);
 }
+
+.notificaciones-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  padding: 16px;
+}
+
+.notificacion-card {
+  width: 300px;
+}

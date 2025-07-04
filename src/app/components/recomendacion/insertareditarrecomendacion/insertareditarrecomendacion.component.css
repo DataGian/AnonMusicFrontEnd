@@ -11,7 +11,7 @@
 h1 {
   font-size: 1.8rem;
   font-weight: bold;
-  color: #3f51b5;
+  color: #E4881D;
   margin-bottom: 2rem;
 }
 
@@ -33,7 +33,7 @@ mat-radio-button {
 }
 
 button {
-  background-color: #3f51b5;
+  background-color: #E4881D;
   color: white;
   padding: 0.6rem 1.2rem;
   font-size: 1rem;
@@ -44,7 +44,7 @@ button {
 }
 
 button:hover {
-  background-color: #303f9f;
+  background-color: #E4881D;
 }
 
 mat-error {
@@ -52,7 +52,9 @@ mat-error {
   color: #f44336;
   font-weight: 500;
 }
-
+.contenido {
+  padding-top: 50px; /* O el alto real del mat-toolbar */
+}
 @media (max-width: 600px) {
   .container {
     margin: 1rem;
