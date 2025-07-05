@@ -39,10 +39,11 @@ export class ListarnotificacionesxusuarioComponent implements OnInit, AfterViewI
   constructor(private nxuS: NotificacionesxusuarioService) {}
 
   ngOnInit(): void {
-    this.nxuS.list().subscribe((data) => {
-  console.log('Datos cargados:', data); // 👈 Verifica que no sea []
+    this.nxuS.getList().subscribe((data) => {
+    this.dataSource.data = data;})
 
-  this.dataSource.data = data;
+  this.nxuS.list().subscribe((data) => {
+    this.dataSource.data = data;
 
   this.dataSource.filterPredicate = (notificacionesxusuario: NotificacionxUsuario, filtro: string) => {
     const dataStr = `

@@ -29,8 +29,11 @@ export class ListarseguidoresComponent implements OnInit, AfterViewInit{
   constructor(private sS: SeguidoresService) {}
 
   ngOnInit(): void {
-    this.sS.list().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data); // Asignamos una nueva instancia
+        this.sS.getList().subscribe((data) => {
+    this.dataSource.data = data;})
+
+  this.sS.list().subscribe((data) => {
+    this.dataSource.data = data;
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
   

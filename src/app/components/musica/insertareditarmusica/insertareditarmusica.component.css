@@ -11,8 +11,9 @@
 h1 {
   font-size: 1.8rem;
   font-weight: bold;
-  color: #3f51b5;
+  color: #e4881d;
   margin-bottom: 2rem;
+  padding-top: 5%;
 }
 
 mat-form-field {
@@ -33,7 +34,7 @@ mat-radio-button {
 }
 
 button {
-  background-color: #3f51b5;
+  background-color: #e4881d;
   color: white;
   padding: 0.6rem 1.2rem;
   font-size: 1rem;
@@ -44,7 +45,7 @@ button {
 }
 
 button:hover {
-  background-color: #303f9f;
+  background-color: #e4881d;
 }
 
 mat-error {

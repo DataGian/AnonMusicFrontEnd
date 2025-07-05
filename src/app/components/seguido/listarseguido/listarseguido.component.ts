@@ -21,7 +21,6 @@ import { MatInputModule, MatLabel } from '@angular/material/input';
     MatIconModule,
     RouterLink,
     MatPaginator,
-    MatSort,
     MatFormFieldModule,
     MatInputModule,
     MatLabel
@@ -39,9 +38,11 @@ export class ListarseguidoComponent implements OnInit, AfterViewInit {
   constructor(private sS: SeguidoService) {}
 
   ngOnInit(): void {
-    this.sS.list().subscribe((data) => {
-      console.log('Datos recibidos:', data); // Verifica en consola
-      this.dataSource.data = data;
+        this.sS.getList().subscribe((data) => {
+    this.dataSource.data = data;})
+
+  this.sS.list().subscribe((data) => {
+    this.dataSource.data = data;
 
       // Filtro personalizado
       this.dataSource.filterPredicate = (seguido: Seguido, filtro: string) => {

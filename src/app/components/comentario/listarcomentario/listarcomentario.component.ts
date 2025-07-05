@@ -45,8 +45,11 @@ export class ListarcomentarioComponent implements OnInit,AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
   constructor(private cS: ComentarioService) {}
   ngOnInit(): void {
-    this.cS.list().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data); // Asignamos una nueva instancia
+      this.cS.getList().subscribe((data) => {
+    this.dataSource.data = data;})
+
+  this.cS.list().subscribe((data) => {
+    this.dataSource.data = data;
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
   

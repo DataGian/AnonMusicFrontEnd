@@ -23,6 +23,7 @@
 <div class="menu-desplegable" *ngIf="menuDesplegado">
   <ng-container>
     <button mat-button [matMenuTriggerFor]="menuUsuarios"><mat-icon>person</mat-icon>Usuarios</button>
+    <button mat-button [matMenuTriggerFor]="menuRoles"><mat-icon>group</mat-icon>Roles</button>
     <button mat-button [matMenuTriggerFor]="menuNotificaciones"><mat-icon>notification_important</mat-icon>Notificaciones</button>
     <button mat-button [matMenuTriggerFor]="menuNotificacionesxUsuario"><mat-icon>notification_important</mat-icon>Notificaciones por usuario</button>
     <button mat-button [matMenuTriggerFor]="menuSeguidos"><mat-icon>person_add</mat-icon>Seguidos</button>
@@ -41,6 +42,11 @@
 <mat-menu #menuUsuarios="matMenu">
   <button mat-menu-item routerLink="/usuarios">Listar</button>
   <button mat-menu-item routerLink="/usuarios/insertareditar">Registrar</button>
+</mat-menu>
+
+<mat-menu #menuRoles="matMenu">
+  <button mat-menu-item routerLink="/roles">Listar</button>
+  <button mat-menu-item routerLink="/roles/insertareditar">Registrar</button>
 </mat-menu>
 
 <mat-menu #menuNotificaciones="matMenu">

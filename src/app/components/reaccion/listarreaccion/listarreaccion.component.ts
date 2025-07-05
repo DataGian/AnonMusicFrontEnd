@@ -47,8 +47,11 @@ export class ListarreaccionComponent implements OnInit, AfterViewInit{
   @ViewChild(MatSort) sort!: MatSort;
   constructor(private rS: ReaccionService) {}
   ngOnInit(): void {
+      this.rS.getList().subscribe((data) => {
+    this.dataSource.data = data;})
+
   this.rS.list().subscribe((data) => {
-    this.dataSource = new MatTableDataSource(data);
+    this.dataSource.data = data;
 
     this.dataSource.filterPredicate = (reaccion: Reacciones, filtro: string) => {
       const dataStr = `${reaccion.idReacciones} ${reaccion.publicaciones?.contenido || ''}`.toLowerCase();

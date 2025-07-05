@@ -1,47 +1,49 @@
-/* Asegura que el contenido no quede tapado por el toolbar */
+/* Contenedor principal */
 .container {
+  position: relative;
   padding: 2rem;
-  padding-top: 96px; /* Ajusta si tu toolbar es más alta */
-  max-width: 1200px;
-  margin: 0 auto;
+  margin-top: 64px; /* margen debajo de la barra de navegación si existe */
 }
 
-/* Botón flotante con texto que aparece al pasar el mouse */
+/* Estilo del botón flotante y texto */
 .add-button-wrapper {
+  color: #f4b66e;
   position: absolute;
-  top: 0;
+  top: -2rem;
   right: 2rem;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 10px;
   z-index: 10;
+  padding-top: 5%;
 }
 
 .add-button-text {
   opacity: 0;
-  transition: opacity 0.3s ease;
-  font-weight: bold;
-  color: #e4881d;
+  transform: translateX(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  background-color: #f4b66e;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  white-space: nowrap;
+  pointer-events: none;
 }
 
 .add-button-text.visible {
   opacity: 1;
+  transform: translateX(0);
 }
 
-h1 {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #E4881D;
-  margin-bottom: 2rem;
-}
-
+/* Botón de color personalizado */
 .button-color {
-  background-color: #e4881d;
+  background-color: #f4b66e;
   color: white;
 }
 
 .button-color:hover {
-  background-color: #d47712;
+  background-color: #eaa652;
 }
 
 /* Contenedor de tarjetas */
@@ -85,4 +87,10 @@ h1 {
 
 .notificacion-card {
   width: 300px;
+}
+h1{
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #E4881D;
+  margin-bottom: 2rem;
 }

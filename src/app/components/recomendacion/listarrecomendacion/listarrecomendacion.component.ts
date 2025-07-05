@@ -21,7 +21,6 @@ import { MatInputModule } from '@angular/material/input';
     MatIconModule,
     RouterLink,
     MatPaginator,
-    MatSort,
     MatFormFieldModule,
     MatInputModule
   ],
@@ -38,8 +37,11 @@ export class ListarrecomendacionComponent implements OnInit, AfterViewInit {
   constructor(private rS: RecomendacionService) {}
 
   ngOnInit(): void {
-    this.rS.list().subscribe((data) => {
-      this.dataSource.data = data;
+        this.rS.getList().subscribe((data) => {
+    this.dataSource.data = data;})
+
+  this.rS.list().subscribe((data) => {
+    this.dataSource.data = data;
 
       this.dataSource.filterPredicate = (recomendacion: Recomendaciones, filtro: string) => {
         const dataStr = `

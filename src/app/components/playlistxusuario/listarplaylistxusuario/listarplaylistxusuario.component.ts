@@ -27,8 +27,11 @@ export class ListarplaylistxusuarioComponent implements OnInit, AfterViewInit {
   constructor(private pxS:PlaylistxusuarioService) { }
 
   ngOnInit(): void {
-    this.pxS.list().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data); // Asignamos una nueva instancia
+        this.pxS.getList().subscribe((data) => {
+    this.dataSource.data = data;})
+
+  this.pxS.list().subscribe((data) => {
+    this.dataSource.data = data;
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
   

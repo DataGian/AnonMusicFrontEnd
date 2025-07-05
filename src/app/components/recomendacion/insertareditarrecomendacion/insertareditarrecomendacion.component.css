@@ -11,8 +11,9 @@
 h1 {
   font-size: 1.8rem;
   font-weight: bold;
-  color: #E4881D;
+  color: #e4881d;
   margin-bottom: 2rem;
+  padding-top: 5%;
 }
 
 mat-form-field {
@@ -33,7 +34,7 @@ mat-radio-button {
 }
 
 button {
-  background-color: #E4881D;
+  background-color: #e4881d;
   color: white;
   padding: 0.6rem 1.2rem;
   font-size: 1rem;
@@ -44,7 +45,7 @@ button {
 }
 
 button:hover {
-  background-color: #E4881D;
+  background-color: #e4881d;
 }
 
 mat-error {
@@ -52,9 +53,7 @@ mat-error {
   color: #f44336;
   font-weight: 500;
 }
-.contenido {
-  padding-top: 50px; /* O el alto real del mat-toolbar */
-}
+
 @media (max-width: 600px) {
   .container {
     margin: 1rem;
