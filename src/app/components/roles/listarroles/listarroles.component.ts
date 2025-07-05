@@ -55,11 +55,6 @@ export class ListarrolesComponent implements OnInit,AfterViewInit{
         return dataStr.includes(filtro);
       };
     });
-
-    // Escuchar cambios globales
-    this.rS.getList().subscribe((data) => {
-      this.dataSource.data = data;
-    });
   }
 
   ngAfterViewInit(): void {

@@ -26,6 +26,8 @@ import { MusicaComponent } from './components/musica/musica.component';
 import { InsertareditarmusicaComponent } from './components/musica/insertareditarmusica/insertareditarmusica.component';
 import { RecomendacionComponent } from './components/recomendacion/recomendacion.component';
 import { InsertareditarrecomendacionComponent } from './components/recomendacion/insertareditarrecomendacion/insertareditarrecomendacion.component';
+import { RolesComponent } from './components/roles/roles.component';
+import { InsertareditarrolesComponent } from './components/roles/insertareditarroles/insertareditarroles.component';
 
 
 export const routes: Routes = [
@@ -153,4 +155,12 @@ export const routes: Routes = [
       { path: 'ediciones/:id', component: InsertareditarrecomendacionComponent },
     ],
   },
+  {
+    path: 'roles',
+    component: RolesComponent,
+    children: [
+      { path: 'insertareditar', component: InsertareditarrolesComponent },
+      { path: 'ediciones/:id', component: InsertareditarrolesComponent },
+    ],canActivate: [seguridadGuard ],
+  }
 ];

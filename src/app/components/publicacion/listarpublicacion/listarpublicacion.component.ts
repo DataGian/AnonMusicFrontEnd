@@ -37,8 +37,11 @@ export class ListarpublicacionComponent implements OnInit, AfterViewInit {
   constructor(private pS: PublicacionService) {}
 
   ngOnInit(): void {
-    this.pS.list().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
+        this.pS.getList().subscribe((data) => {
+    this.dataSource.data = data;})
+
+  this.pS.list().subscribe((data) => {
+    this.dataSource.data = data;
 
       // Configurar filtro
       this.dataSource.filterPredicate = (data: Publicacion, filter: string) => {

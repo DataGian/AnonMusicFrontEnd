@@ -45,8 +45,11 @@ dataSource: MatTableDataSource<Musica> = new MatTableDataSource();
   @ViewChild(MatSort) sort!: MatSort;
   constructor(private mS:MusicaService){}
   ngOnInit(): void {
+    this.mS.getList().subscribe((data) => {
+    this.dataSource.data = data;})
+
   this.mS.list().subscribe((data) => {
-    this.dataSource = new MatTableDataSource(data);
+    this.dataSource.data = data;
 
     this.dataSource.filterPredicate = (musica: Musica, filtro: string) => {
       const privacidad = musica.privacidad ? 'privado' : 'publico';
