@@ -10,7 +10,7 @@ const base_url= environment.base;
 })
 export class SeguidoresService {
   private listacambio=new Subject<Seguidores[]>();
-  private url = `${base_url}/seguidores`;
+  private url = `${base_url}/Seguidores`;
   constructor(private h: HttpClient) { }
   list() {
       return this.h.get<Seguidores[]>(`${this.url}/listado`);

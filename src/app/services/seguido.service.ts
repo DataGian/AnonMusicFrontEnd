@@ -9,7 +9,7 @@ const base_url = environment.base;
 })
 export class SeguidoService {
   private listacambio=new Subject<Seguido[]>();
-    private url = `${base_url}/seguidos`;
+    private url = `${base_url}/Seguidos`;
 
   constructor(private h: HttpClient) { }
 

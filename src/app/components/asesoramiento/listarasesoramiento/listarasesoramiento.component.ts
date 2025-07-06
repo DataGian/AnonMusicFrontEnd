@@ -8,15 +8,15 @@ import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
-import { ReaccionService } from '../../../services/reaccion.service';
-import { Reacciones } from '../../../models/reaccion';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule, MatLabel } from '@angular/material/input';
+import { Asesoramientos } from '../../../models/asesoramiento';
+import { AsesoramientoService } from '../../../services/asesoramiento.service';
 
 @Component({
-  selector: 'app-listarreaccion',
+  selector: 'app-listarasesoramiento',
   imports: [
     MatTableModule,
     CommonModule,
@@ -28,31 +28,31 @@ import { MatInputModule, MatLabel } from '@angular/material/input';
     MatInputModule,
     MatLabel,
   ],
-  templateUrl: './listarreaccion.component.html',
-  styleUrl: './listarreaccion.component.css',
+  templateUrl: './listarasesoramiento.component.html',
+  styleUrl: './listarasesoramiento.component.css',
 })
-export class ListarreaccionComponent implements OnInit, AfterViewInit {
-  dataSource: MatTableDataSource<Reacciones> = new MatTableDataSource();
-  displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6'];
+export class ListarasesoramientoComponent implements OnInit {
+  dataSource: MatTableDataSource<Asesoramientos> = new MatTableDataSource();
+  displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7'];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  constructor(private rS: ReaccionService) {}
+  constructor(private aS: AsesoramientoService) {}
   ngOnInit(): void {
-    this.rS.getList().subscribe((data) => {
+    this.aS.getList().subscribe((data) => {
       this.dataSource.data = data;
     });
 
-    this.rS.list().subscribe((data) => {
+    this.aS.list().subscribe((data) => {
       this.dataSource.data = data;
 
       this.dataSource.filterPredicate = (
-        reaccion: Reacciones,
+        asesoramiento: Asesoramientos,
         filtro: string
       ) => {
-        const dataStr = `${reaccion.idReacciones} ${
-          reaccion.publicaciones?.contenido || ''
-        }`.toLowerCase();
+        const dataStr = `${asesoramiento.IdAsesoramiento} ${
+          asesoramiento.musica?.nombre || ''
+        } ${asesoramiento.usuario?.username || ''}`.toLowerCase();
         return dataStr.includes(filtro);
       };
     });
@@ -75,9 +75,9 @@ export class ListarreaccionComponent implements OnInit, AfterViewInit {
   }
 
   eliminar(id: number) {
-    this.rS.deleteReaccion(id).subscribe(() => {
-      this.rS.list().subscribe((data) => {
-        this.rS.setList(data);
+    this.aS.deleteAsesoramiento(id).subscribe(() => {
+      this.aS.list().subscribe((data) => {
+        this.aS.setList(data);
       });
     });
   }

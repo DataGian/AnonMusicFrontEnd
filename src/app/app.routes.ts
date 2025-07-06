@@ -31,6 +31,8 @@ import { InsertareditarrolesComponent } from './components/roles/insertareditarr
 import { ReportenotificacionesnovistasportipoComponent } from './components/reportes/reportenotificacionesnovistasportipo/reportenotificacionesnovistasportipo.component';
 import { ReporteusuariosconmasmusicaanonimaComponent } from './components/reportes/reporteusuariosconmasmusicaanonima/reporteusuariosconmasmusicaanonima.component';
 import { ReporteusuariosconmasnostificacionesnoleidasComponent } from './components/reportes/reporteusuariosconmasnostificacionesnoleidas/reporteusuariosconmasnostificacionesnoleidas.component';
+import { AsesoramientoComponent } from './components/asesoramiento/asesoramiento.component';
+import { InsertareditarasesoramientoComponent } from './components/asesoramiento/insertareditarasesoramiento/insertareditarasesoramiento.component';
 
 export const routes: Routes = [
   {
@@ -189,6 +191,15 @@ export const routes: Routes = [
     children: [
       { path: 'insertareditar', component: InsertareditarrolesComponent },
       { path: 'ediciones/:id', component: InsertareditarrolesComponent },
+    ],
+    canActivate: [seguridadGuard],
+  },
+  {
+    path: 'asesoramientos',
+    component: AsesoramientoComponent,
+    children: [
+      { path: 'insertareditar', component: InsertareditarasesoramientoComponent },
+      { path: 'ediciones/:id', component: InsertareditarasesoramientoComponent },
     ],
     canActivate: [seguridadGuard],
   },

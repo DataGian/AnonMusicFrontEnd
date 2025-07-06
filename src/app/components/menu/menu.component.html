@@ -35,6 +35,7 @@
     <button mat-button [matMenuTriggerFor]="menuReportes"><mat-icon>file_copy</mat-icon>Reportes</button>
     <button mat-button [matMenuTriggerFor]="menuMusicas"><mat-icon>music_note</mat-icon>Musicas</button>
     <button mat-button [matMenuTriggerFor]="menuRecomendacion"><mat-icon>recommend</mat-icon>Recomendaciones</button>
+    <button mat-button [matMenuTriggerFor]="menuAsesoramiento"><mat-icon>school</mat-icon>Asesoramientos</button>
   </ng-container>
 </div>
 
@@ -97,6 +98,11 @@
 <mat-menu #menuRecomendacion="matMenu">
   <button mat-menu-item routerLink="/recomendaciones">Listar</button>
   <button mat-menu-item routerLink="/recomendaciones/insertareditar">Registrar</button>
+</mat-menu>
+
+<mat-menu #menuAsesoramiento="matMenu">
+  <button mat-menu-item routerLink="/asesoramientos">Listar</button>
+  <button mat-menu-item routerLink="/asesoramientos/insertareditar">Registrar</button>
 </mat-menu>
 
 <mat-menu #menuReportes="matMenu">
