@@ -28,6 +28,7 @@ import { RecomendacionComponent } from './components/recomendacion/recomendacion
 import { InsertareditarrecomendacionComponent } from './components/recomendacion/insertareditarrecomendacion/insertareditarrecomendacion.component';
 import { RolesComponent } from './components/roles/roles.component';
 import { InsertareditarrolesComponent } from './components/roles/insertareditarroles/insertareditarroles.component';
+import { ReportenotificacionesnovistasportipoComponent } from './components/reportes/reportenotificacionesnovistasportipo/reportenotificacionesnovistasportipo.component';
 
 
 export const routes: Routes = [
@@ -134,10 +135,9 @@ export const routes: Routes = [
   {
     path: 'reportes',component: ReportesComponent,
     children:[
-      {
-        path: 'publicacionesconmascomentarios', component: Reporte5publicacionesconmascomentariosComponent
-      },
-     ]
+      { path: 'publicacionesconmascomentarios', component: Reporte5publicacionesconmascomentariosComponent},
+      { path: 'notificacionesnovistas', component: ReportenotificacionesnovistasportipoComponent}
+     ],
   },
   {
     path: 'musicas',

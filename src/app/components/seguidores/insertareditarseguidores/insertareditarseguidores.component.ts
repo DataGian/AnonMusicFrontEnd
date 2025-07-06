@@ -14,6 +14,16 @@ import {provideNativeDateAdapter} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import { CommonModule } from '@angular/common';
 
+function noFechaPasadaValidator(control: FormControl) {
+  const inputDate = new Date(control.value);
+  const today = new Date();
+  today.setHours(0, 0, 0, 0); // Quitar la hora para comparación justa
+
+  
+
+  return inputDate > today ? { fechaPasada: true } : null;
+}
+
 @Component({
   selector: 'app-insertareditarseguidores',
   providers: [provideNativeDateAdapter()],
@@ -45,8 +55,14 @@ export class InsertareditarseguidoresComponent implements OnInit{
 
     this.form = this.formBuilder.group({
       codigo: [''],
-      fecha: ['', Validators.required],
-      cantidad: ['', Validators.required],
+      fecha: ['', [Validators.required, noFechaPasadaValidator]],
+      cantidad: ['',
+    [
+      Validators.required,
+      Validators.pattern('^[0-9]*$'), // Solo números enteros positivos
+      Validators.min(1),              // Opcional: mínimo 1
+    ]
+  ],
       usuarios: ['', Validators.required],
     });
 

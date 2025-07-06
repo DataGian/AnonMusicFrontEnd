@@ -14,6 +14,16 @@ import { MusicaService } from '../../../services/musica.service';
 import { UsuarioService } from '../../../services/usuario.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
+function noFechaPasadaValidator(control: FormControl) {
+  const inputDate = new Date(control.value);
+  const today = new Date();
+  today.setHours(0, 0, 0, 0); // Quitar la hora para comparación justa
+
+  
+
+  return inputDate > today ? { fechaPasada: true } : null;
+}
+
 @Component({
   selector: 'app-insertareditarmusica',
   providers: [provideNativeDateAdapter()],
@@ -60,7 +70,7 @@ constructor(
       codigo: [''],
       archivo: ['', Validators.required],
       nombre: ['', Validators.required],
-      fecha: ['', Validators.required],
+      fecha: ['', [Validators.required, noFechaPasadaValidator]],
       privacidad: ['', Validators.required],
       usuario: ['', Validators.required],
       usado: ['', Validators.required],

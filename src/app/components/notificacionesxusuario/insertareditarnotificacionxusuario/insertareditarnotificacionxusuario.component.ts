@@ -25,6 +25,16 @@ import { MatInputModule } from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 
+function noFechaPasadaValidator(control: FormControl) {
+  const inputDate = new Date(control.value);
+  const today = new Date();
+  today.setHours(0, 0, 0, 0); // Quitar la hora para comparación justa
+
+  
+
+  return inputDate > today ? { fechaPasada: true } : null;
+}
+
 @Component({
   selector: 'app-insertareditarnotificacionxusuario',
   providers: [provideNativeDateAdapter()],
@@ -71,7 +81,7 @@ export class InsertareditarnotificacionxusuarioComponent implements OnInit {
     this.form = this.formBuilder.group({
       codigo: [''],
       visto: ['', Validators.required],
-      fecha: ['', Validators.required],
+      fecha: ['', [Validators.required, noFechaPasadaValidator]],
       usuariosnxu: ['', Validators.required],
       notificacionesnxu: ['', Validators.required],
     });

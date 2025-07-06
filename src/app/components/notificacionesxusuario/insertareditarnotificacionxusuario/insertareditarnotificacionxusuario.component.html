@@ -24,7 +24,7 @@
       <mat-form-field>
         <mat-label>Fecha:</mat-label>
         <input matInput [matDatepicker]="picker" formControlName="fecha" />
-        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-hint>DD/MM/YYYY</mat-hint>
         <mat-datepicker-toggle
           matIconSuffix
           [for]="picker"
@@ -33,6 +33,9 @@
         <mat-error *ngIf="form.get('fecha')?.hasError('required')">
           La fecha es obligatoria!!
         </mat-error>
+        <mat-error *ngIf="form.get('fechaCreacion')?.hasError('fechaPasada')">
+    La fecha debe ser anterior a hoy.
+  </mat-error>
       </mat-form-field>
       <br />
       <mat-form-field>

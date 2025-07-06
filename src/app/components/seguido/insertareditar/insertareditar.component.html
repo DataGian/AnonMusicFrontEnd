@@ -18,6 +18,12 @@
         <mat-error *ngIf="form.get('cantidad')?.hasError('required')">
           La cantidad es obligatorio!!
         </mat-error>
+        <mat-error *ngIf="form.get('cantidad')?.hasError('pattern')">
+  La cantidad debe contener solo números.
+</mat-error>
+<mat-error *ngIf="form.get('cantidad')?.hasError('min')">
+  La cantidad debe ser mayor que 0.
+</mat-error>
       </mat-form-field>
       <br />
       <mat-form-field>
@@ -32,6 +38,9 @@
         <mat-error *ngIf="form.get('fecha')?.hasError('required')">
           La fecha es obligatoria!!
         </mat-error>
+        <mat-error *ngIf="form.get('fechaCreacion')?.hasError('fechaPasada')">
+    La fecha debe ser anterior a hoy.
+  </mat-error>
       </mat-form-field>
       <br />
       <mat-form-field>
