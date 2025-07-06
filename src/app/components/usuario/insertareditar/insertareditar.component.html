@@ -1,17 +1,20 @@
 <div class="container">
   <div class="contenido" style="text-align: center; margin: 5%">
-    <h1>{{ edicion ? 'Actualizar Usuarios' : 'Registro de Usuarios' }}</h1>
-    </div>
+    <h1>{{ edicion ? "Actualizar Usuarios" : "Registro de Usuarios" }}</h1>
+  </div>
   <div style="text-align: center; margin: 5%">
     <form [formGroup]="form" (submit)="aceptar()">
-        <mat-form-field class="example-full-width" *ngIf="edicion">
+      <mat-form-field class="example-full-width" *ngIf="edicion">
         <mat-label>Id</mat-label>
         <input matInput formControlName="codigo" />
         <mat-error *ngIf="form.get('codigo')?.hasError('required')">
           El codigo es obligatorio!!
         </mat-error>
+        <mat-error *ngIf="form.get('username')?.hasError('maxlength')">
+          Máximo 100 caracteres permitidos.
+        </mat-error>
       </mat-form-field>
-      <br>
+      <br />
       <mat-form-field class="example-full-width">
         <mat-label>Username</mat-label>
         <input matInput formControlName="username" />
@@ -33,6 +36,12 @@
         <input matInput formControlName="email" />
         <mat-error *ngIf="form.get('email')?.hasError('required')">
           El email es obligatorio!!
+        </mat-error>
+        <mat-error *ngIf="form.get('email')?.hasError('email')">
+          Formato de email inválido.
+        </mat-error>
+        <mat-error *ngIf="form.get('email')?.hasError('maxlength')">
+          Máximo 100 caracteres permitidos.
         </mat-error>
       </mat-form-field>
       <br />

@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartDataset, ChartOptions, ChartType } from 'chart.js';
-import { PublicacionService } from '../../../services/publicacion.service';
 import { BaseChartDirective } from 'ng2-charts';
+import { NotificacionService } from '../../../services/notificacion.service';
 
 @Component({
-  selector: 'app-reporte5publicacionesconmascomentarios',
+  selector: 'app-reportenotificacionesnovistasportipo',
   imports: [BaseChartDirective],
-  templateUrl: './reporte5publicacionesconmascomentarios.component.html',
-  styleUrl: './reporte5publicacionesconmascomentarios.component.css'
+  templateUrl: './reportenotificacionesnovistasportipo.component.html',
+  styleUrl: './reportenotificacionesnovistasportipo.component.css',
 })
-export class Reporte5publicacionesconmascomentariosComponent implements OnInit {
-barChartOptions: ChartOptions = {
+export class ReportenotificacionesnovistasportipoComponent implements OnInit {
+  barChartOptions: ChartOptions = {
     responsive: true,
   };
   barChartLabels: string[] = [];
@@ -18,14 +18,16 @@ barChartOptions: ChartOptions = {
   barChartLegend = true;
   barChartData: ChartDataset[] = [];
 
-  constructor(private pS: PublicacionService) {}
+  constructor(private nS: NotificacionService) {}
   ngOnInit(): void {
-    this.pS.get5PubliconmasComentarios().subscribe((data) => {
-      this.barChartLabels =data.map((item) => item.idPublicacion.toString());
+    this.nS.getNotificacionesNoVistasPorTipo().subscribe((data) => {
+      this.barChartLabels = data.map((item) =>
+        item.tipoNotificacion.toString()
+      );
       this.barChartData = [
         {
-          data: data.map((item) => item.cantidadComentarios),
-          label: '5 publicaciones con mas comentarios',
+          data: data.map((item) => item.cantidadNotificacionesNoVistas),
+          label: 'Notificaciones no vistas por tipo',
           backgroundColor: [
             '#F4B66E', // durazno
             '#E4881D', // naranja fuerte

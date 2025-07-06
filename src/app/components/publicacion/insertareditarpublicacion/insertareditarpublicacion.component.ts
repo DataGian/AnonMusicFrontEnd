@@ -21,6 +21,30 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatRadioModule } from '@angular/material/radio';
+import { AbstractControl, ValidationErrors } from '@angular/forms';
+
+export function maxPalabrasValidator(maxPalabras: number) {
+  return (control: AbstractControl): ValidationErrors | null => {
+    const texto: string = control.value || '';
+    const palabras = texto.trim().split(/\s+/).filter((palabra: string) => palabra.length > 0);
+    const cantidadPalabras = palabras.length;
+
+    return cantidadPalabras > maxPalabras
+      ? { maxPalabras: { actual: cantidadPalabras, max: maxPalabras } }
+      : null;
+  };
+}
+
+
+function noFechaPasadaValidator(control: FormControl) {
+  const inputDate = new Date(control.value);
+  const today = new Date();
+  today.setHours(0, 0, 0, 0); // Quitar la hora para comparación justa
+
+  
+
+  return inputDate > today ? { fechaPasada: true } : null;
+}
 
 @Component({
   selector: 'app-insertareditarpublicacion',
@@ -74,9 +98,9 @@ export class InsertareditarpublicacionComponent implements OnInit {
     this.form = this.formBuilder.group({
       codigo: [''],
       tipoPublicacion: ['', Validators.required],
-      fechaPublicacion: ['', Validators.required],
+      fechaPublicacion: ['', [Validators.required, noFechaPasadaValidator]],
       privacidad: ['', Validators.required],
-      contenido: ['', Validators.required],
+      contenido: ['', [Validators.required, maxPalabrasValidator(200)]],
       archivo: ['', Validators.required],
       usuario: ['', Validators.required],
     });

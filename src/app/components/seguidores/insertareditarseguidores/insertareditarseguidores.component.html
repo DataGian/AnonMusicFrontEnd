@@ -1,7 +1,13 @@
 <div class="container">
   <div style="text-align: center; margin: 5%">
-    <h1>{{ edicion ? 'Actualizar Seguidores de Usuario' : 'Registro de Seguidores de Usuario' }}</h1>
-    </div>
+    <h1>
+      {{
+        edicion
+          ? "Actualizar Seguidores de Usuario"
+          : "Registro de Seguidores de Usuario"
+      }}
+    </h1>
+  </div>
   <div style="text-align: center; margin: 5%">
     <form [formGroup]="form" (submit)="aceptar()">
       <mat-form-field class="example-full-width" *ngIf="edicion">
@@ -11,7 +17,7 @@
           El codigo es obligatorio!!
         </mat-error>
       </mat-form-field>
-      <br>  
+      <br />
       <mat-form-field>
         <mat-label>Fecha:</mat-label>
         <input matInput [matDatepicker]="picker" formControlName="fecha" />
@@ -24,16 +30,25 @@
         <mat-error *ngIf="form.get('fecha')?.hasError('required')">
           La fecha es obligatoria!!
         </mat-error>
+        <mat-error *ngIf="form.get('fechaCreacion')?.hasError('fechaPasada')">
+          La fecha debe ser anterior a hoy.
+        </mat-error>
       </mat-form-field>
       <br />
       <mat-form-field class="example-full-width">
         <mat-label>Cantidad</mat-label>
-        <input matInput formControlName="cantidad">
+        <input matInput formControlName="cantidad" />
         <mat-error *ngIf="form.get('cantidad')?.hasError('required')">
           La cantidad es obligatoria!!
         </mat-error>
-        </mat-form-field>
-      <br>
+        <mat-error *ngIf="form.get('cantidad')?.hasError('pattern')">
+  La cantidad debe contener solo números.
+</mat-error>
+<mat-error *ngIf="form.get('cantidad')?.hasError('min')">
+  La cantidad debe ser mayor que 0.
+</mat-error>
+      </mat-form-field>
+      <br />
       <mat-form-field>
         <mat-label>Usuarios</mat-label>
         <mat-select formControlName="usuarios">
@@ -45,5 +60,5 @@
       <br />
       <button matButton="filled">Aceptar</button>
     </form>
-  </div>
+  </div>
 </div>

@@ -70,6 +70,7 @@ export class LandingComponentng  {
       '/comentarios/insertareditar',
       '/comentarios/ediciones',
       '/reportes',
+      '/reportes/notificacionesnovistas',
       '/musicas',
       '/musicas/insertareditar',
       '/musicas/ediciones',

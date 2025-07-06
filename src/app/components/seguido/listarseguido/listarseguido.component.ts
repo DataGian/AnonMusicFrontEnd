@@ -30,7 +30,7 @@ import { MatInputModule, MatLabel } from '@angular/material/input';
 })
 export class ListarseguidoComponent implements OnInit, AfterViewInit {
   dataSource = new MatTableDataSource<Seguido>();
-  displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'c5'];
+  displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6'];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;

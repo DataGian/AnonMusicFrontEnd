@@ -13,7 +13,15 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {provideNativeDateAdapter} from '@angular/material/core';
+function noFechaPasadaValidator(control: FormControl) {
+  const inputDate = new Date(control.value);
+  const today = new Date();
+  today.setHours(0, 0, 0, 0); // Quitar la hora para comparación justa
 
+  
+
+  return inputDate > today ? { fechaPasada: true } : null;
+}
 
 @Component({
   selector: 'app-insertareditar',
@@ -49,8 +57,14 @@ export class InsertareditarSeguidoComponent implements OnInit {
 
     this.form = this.formBuilder.group({
       codigo: [''],
-      cantidad: ['', Validators.required],
-      fecha: ['', Validators.required],
+      cantidad: ['',
+    [
+      Validators.required,
+      Validators.pattern('^[0-9]*$'), // Solo números enteros positivos
+      Validators.min(1),              // Opcional: mínimo 1
+    ]
+  ],
+      fecha: ['', [Validators.required, noFechaPasadaValidator]],
       usua: ['', Validators.required],
     });
 

@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Notificacion } from '../models/notificacion';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { NotificacionesNoVistasDTO } from '../models/NotificacionesNoVistasDTO';
 
 const base_url= environment.base;
 @Injectable({
@@ -33,5 +34,9 @@ export class NotificacionService {
   }
   deleteNotificacion(id: number){
     return this.http.delete(`${this.url}/${id}`);
+  }
+
+  getNotificacionesNoVistasPorTipo(): Observable<NotificacionesNoVistasDTO[]> {
+    return this.http.get<NotificacionesNoVistasDTO[]>(`${this.url}/notificacionesnovistas`);
   }
 }

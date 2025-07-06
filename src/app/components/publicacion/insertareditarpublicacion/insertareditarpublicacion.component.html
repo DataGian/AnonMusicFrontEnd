@@ -1,8 +1,10 @@
 <div class="container">
   <div class="contenido" style="text-align: center; margin: 5%">
-    <h1>{{ edicion ? 'Actualizar Publicaciones' : 'Registro de Publicaciones' }}</h1>
-    </div>
-  <div style="text-align: center;margin: 5%;">
+    <h1>
+      {{ edicion ? "Actualizar Publicaciones" : "Registro de Publicaciones" }}
+    </h1>
+  </div>
+  <div style="text-align: center; margin: 5%">
     <form [formGroup]="form" (submit)="aceptar()">
       <mat-form-field class="example-full-width" *ngIf="edicion">
         <mat-label>ID</mat-label>
@@ -12,7 +14,7 @@
         </mat-error>
       </mat-form-field>
       <br />
-        <mat-form-field class="example-full-width">
+      <mat-form-field class="example-full-width">
         <mat-label>Tipos de publicaciones</mat-label>
         <mat-select formControlName="tipoPublicacion">
           @for (food of tipos; track food) {
@@ -23,10 +25,14 @@
           El tipo es obligatorio!!
         </mat-error>
       </mat-form-field>
-      <br>
+      <br />
       <mat-form-field>
         <mat-label>Fecha:</mat-label>
-        <input matInput [matDatepicker]="picker" formControlName="fechaPublicacion" />
+        <input
+          matInput
+          [matDatepicker]="picker"
+          formControlName="fechaPublicacion"
+        />
         <mat-hint>DD/MM/YYYY</mat-hint>
         <mat-datepicker-toggle
           matIconSuffix
@@ -35,6 +41,9 @@
         <mat-datepicker #picker></mat-datepicker>
         <mat-error *ngIf="form.get('fechaPublicacion')?.hasError('required')">
           La fecha es obligatoria!!
+        </mat-error>
+        <mat-error *ngIf="form.get('fechaCreacion')?.hasError('fechaPasada')">
+          La fecha debe ser anterior a hoy.
         </mat-error>
       </mat-form-field>
 
@@ -49,13 +58,16 @@
       </mat-radio-group>
       <br />
       <mat-form-field class="example-full-width">
-    <mat-label>Contenido</mat-label>
-    <textarea matInput formControlName="contenido"></textarea>
-        <mat-error
-          *ngIf="form.get('contenido')?.hasError('required')"
-        >
+        <mat-label>Contenido</mat-label>
+        <textarea matInput formControlName="contenido"></textarea>
+        <mat-error *ngIf="form.get('contenido')?.hasError('required')">
           El contenido es obligatorio!!
         </mat-error>
+        <mat-error *ngIf="form.get('contenido')?.hasError('maxPalabras')">
+  El contenido no debe superar las 200 palabras (actual: {{
+    form.get('contenido')?.errors?.['maxPalabras']?.actual
+  }}).
+</mat-error>
       </mat-form-field>
       <br />
       <mat-form-field class="example-full-width">
