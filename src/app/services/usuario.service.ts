@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Usuario } from '../models/usuario';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { UsuariosConMasMusicaAnonimaDTO } from '../models/UsuariosConMasMusicaAnonimaDTO';
+import { UsuariosConMasNotificacionesNoLeidasDTO } from '../models/UsuariosConMasNotificacionesNoLeidasDTO';
 
 const base_url = environment.base;
 @Injectable({
@@ -36,5 +38,11 @@ export class UsuarioService {
   deleteusuario(id:number) { //elimina usuario
     return this.http.delete<Usuario>(`${this.url}/${id}`);
 
+  }
+    getUsuariosConMusicaAnonima(): Observable<UsuariosConMasMusicaAnonimaDTO[]> {
+    return this.http.get<UsuariosConMasMusicaAnonimaDTO[]>(`${this.url}/usuariosconmasmusicaanonima`)
+  }
+  getUsuariosConNotifiacionesNoLeidas(): Observable<UsuariosConMasNotificacionesNoLeidasDTO[]> {
+    return this.http.get<UsuariosConMasNotificacionesNoLeidasDTO[]>(`${this.url}/usuariosconmasnotificacionesnoleidas`)
   }
 }//cambio

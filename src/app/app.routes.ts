@@ -29,7 +29,8 @@ import { InsertareditarrecomendacionComponent } from './components/recomendacion
 import { RolesComponent } from './components/roles/roles.component';
 import { InsertareditarrolesComponent } from './components/roles/insertareditarroles/insertareditarroles.component';
 import { ReportenotificacionesnovistasportipoComponent } from './components/reportes/reportenotificacionesnovistasportipo/reportenotificacionesnovistasportipo.component';
-
+import { ReporteusuariosconmasmusicaanonimaComponent } from './components/reportes/reporteusuariosconmasmusicaanonima/reporteusuariosconmasmusicaanonima.component';
+import { ReporteusuariosconmasnostificacionesnoleidasComponent } from './components/reportes/reporteusuariosconmasnostificacionesnoleidas/reporteusuariosconmasnostificacionesnoleidas.component';
 
 export const routes: Routes = [
   {
@@ -42,7 +43,7 @@ export const routes: Routes = [
     component: LoginComponent,
   },
   {
-    path:'homes',
+    path: 'homes',
     component: LandingComponentng,
   },
   {
@@ -52,7 +53,7 @@ export const routes: Routes = [
       { path: 'insertareditar', component: InsertareditarComponent },
       { path: 'ediciones/:id', component: InsertareditarComponent },
     ],
-    canActivate: [seguridadGuard ],
+    canActivate: [seguridadGuard],
   },
   {
     path: 'notificaciones',
@@ -61,7 +62,7 @@ export const routes: Routes = [
       { path: 'insertar', component: InsertareditarNotificacionComponent },
       { path: 'ediciones/:id', component: InsertareditarNotificacionComponent },
     ],
-    canActivate: [seguridadGuard ],
+    canActivate: [seguridadGuard],
   },
   {
     path: 'notificacionesxusuario',
@@ -76,7 +77,7 @@ export const routes: Routes = [
         component: InsertareditarnotificacionxusuarioComponent,
       },
     ],
-    canActivate: [seguridadGuard ],
+    canActivate: [seguridadGuard],
   },
   {
     path: 'seguidos',
@@ -84,7 +85,8 @@ export const routes: Routes = [
     children: [
       { path: 'insertareditar', component: InsertareditarSeguidoComponent },
       { path: 'ediciones/:id', component: InsertareditarSeguidoComponent },
-    ],canActivate: [seguridadGuard ],
+    ],
+    canActivate: [seguridadGuard],
   },
   {
     path: 'publicaciones',
@@ -92,7 +94,8 @@ export const routes: Routes = [
     children: [
       { path: 'insertareditar', component: InsertareditarpublicacionComponent },
       { path: 'ediciones/:id', component: InsertareditarpublicacionComponent },
-    ],canActivate: [seguridadGuard ],
+    ],
+    canActivate: [seguridadGuard],
   },
   {
     path: 'playlistsxusuario',
@@ -106,7 +109,8 @@ export const routes: Routes = [
         path: 'ediciones/:id',
         component: InsertareditarplaylistxusuarioComponent,
       },
-    ],canActivate: [seguridadGuard ],
+    ],
+    canActivate: [seguridadGuard],
   },
   {
     path: 'seguidores',
@@ -114,7 +118,8 @@ export const routes: Routes = [
     children: [
       { path: 'insertar', component: InsertareditarseguidoresComponent },
       { path: 'ediciones/:id', component: InsertareditarseguidoresComponent },
-    ],canActivate: [seguridadGuard ],
+    ],
+    canActivate: [seguridadGuard],
   },
   {
     path: 'comentarios',
@@ -122,7 +127,8 @@ export const routes: Routes = [
     children: [
       { path: 'insertareditar', component: InsertareditarcomentarioComponent },
       { path: 'ediciones/:id', component: InsertareditarcomentarioComponent },
-    ],canActivate: [seguridadGuard ],
+    ],
+    canActivate: [seguridadGuard],
   },
   {
     path: 'reacciones',
@@ -130,14 +136,30 @@ export const routes: Routes = [
     children: [
       { path: 'insertareditar', component: InsertareditarreaccionComponent },
       { path: 'ediciones/:id', component: InsertareditarreaccionComponent },
-    ],canActivate: [seguridadGuard ],
+    ],
+    canActivate: [seguridadGuard],
   },
   {
-    path: 'reportes',component: ReportesComponent,
-    children:[
-      { path: 'publicacionesconmascomentarios', component: Reporte5publicacionesconmascomentariosComponent},
-      { path: 'notificacionesnovistas', component: ReportenotificacionesnovistasportipoComponent}
-     ],
+    path: 'reportes',
+    component: ReportesComponent,
+    children: [
+      {
+        path: 'publicacionesconmascomentarios',
+        component: Reporte5publicacionesconmascomentariosComponent,
+      },
+      {
+        path: 'notificacionesnovistas',
+        component: ReportenotificacionesnovistasportipoComponent,
+      },
+      {
+        path: 'usuariosmasmusicaanonima',
+        component: ReporteusuariosconmasmusicaanonimaComponent,
+      },
+      {
+        path: 'usuariosmasnotificacionesnovistas',
+        component: ReporteusuariosconmasnostificacionesnoleidasComponent,
+      },
+    ],
   },
   {
     path: 'musicas',
@@ -151,8 +173,14 @@ export const routes: Routes = [
     path: 'recomendaciones',
     component: RecomendacionComponent,
     children: [
-      { path: 'insertareditar', component: InsertareditarrecomendacionComponent },
-      { path: 'ediciones/:id', component: InsertareditarrecomendacionComponent },
+      {
+        path: 'insertareditar',
+        component: InsertareditarrecomendacionComponent,
+      },
+      {
+        path: 'ediciones/:id',
+        component: InsertareditarrecomendacionComponent,
+      },
     ],
   },
   {
@@ -161,6 +189,7 @@ export const routes: Routes = [
     children: [
       { path: 'insertareditar', component: InsertareditarrolesComponent },
       { path: 'ediciones/:id', component: InsertareditarrolesComponent },
-    ],canActivate: [seguridadGuard ],
-  }
+    ],
+    canActivate: [seguridadGuard],
+  },
 ];
