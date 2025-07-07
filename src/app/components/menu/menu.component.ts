@@ -33,7 +33,7 @@ export class MenuComponent {
   }
 
   verificar() {
-    this.role = this.loginService.showRole();
+    this.role = this.loginService.showRole()|| '';
     return this.loginService.verificar();
   }
 
