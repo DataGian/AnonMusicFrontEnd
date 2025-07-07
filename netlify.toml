@@ -1,7 +1,3 @@
 [build]
   command = "npm run build"
   publish = "dist/anon-music-front-end"
-  functions = "netlify/functions"
-
-[[plugins]]
-  package = "@netlify/angular-runtime"
