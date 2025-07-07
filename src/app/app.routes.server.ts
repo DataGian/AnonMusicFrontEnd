@@ -95,10 +95,4 @@ export const serverRoutes: ServerRoute[] = [
     path: 'roles/insertareditar',
     renderMode: RenderMode.Server
   },
-
-  // Fallback para evitar errores en otras rutas no listadas
-  {
-    path: '**',
-    renderMode: RenderMode.Server
-  }
 ];
