@@ -57,18 +57,21 @@ export const routes: Routes = [
     component: UsuarioComponent,
     children: [
       { path: 'insertareditar', component: InsertareditarComponent },
-      { path: 'ediciones/:id', component: InsertareditarComponent },
+      { path: 'ediciones/:id', component: InsertareditarComponent,data: { renderMode: 'server' } },
     ],
     canActivate: [seguridadGuard],
+    data: { renderMode: 'server' }
   },
   {
     path: 'notificaciones',
     component: NotificacionComponent,
     children: [
       { path: 'insertar', component: InsertareditarNotificacionComponent },
-      { path: 'ediciones/:id', component: InsertareditarNotificacionComponent },
+      { path: 'ediciones/:id', component: InsertareditarNotificacionComponent,data: { renderMode: 'server' } },
+      
     ],
     canActivate: [seguridadGuard],
+    data: { renderMode: 'server' }
   },
   {
     path: 'notificacionesxusuario',
@@ -81,27 +84,33 @@ export const routes: Routes = [
       {
         path: 'ediciones/:id',
         component: InsertareditarnotificacionxusuarioComponent,
+        data: { renderMode: 'server' }
       },
     ],
     canActivate: [seguridadGuard],
+    data: { renderMode: 'server' }
   },
   {
     path: 'seguidos',
     component: SeguidoComponent,
     children: [
       { path: 'insertareditar', component: InsertareditarSeguidoComponent },
-      { path: 'ediciones/:id', component: InsertareditarSeguidoComponent },
+      { path: 'ediciones/:id', component: InsertareditarSeguidoComponent,data: { renderMode: 'server' } },
     ],
     canActivate: [seguridadGuard],
+    data: { renderMode: 'server' }
   },
   {
     path: 'publicaciones',
     component: PublicacionComponent,
     children: [
       { path: 'insertareditar', component: InsertareditarpublicacionComponent },
-      { path: 'ediciones/:id', component: InsertareditarpublicacionComponent },
+      { path: 'ediciones/:id', component: InsertareditarpublicacionComponent,
+        data: { renderMode: 'server' }
+       },
     ],
     canActivate: [seguridadGuard],
+    data: { renderMode: 'server' }
   },
   {
     path: 'playlistsxusuario',
@@ -114,26 +123,31 @@ export const routes: Routes = [
       {
         path: 'ediciones/:id',
         component: InsertareditarplaylistxusuarioComponent,
+        data: { renderMode: 'server' }
       },
     ],
     canActivate: [seguridadGuard],
+    data: { renderMode: 'server' },
   },
   {
     path: 'seguidores',
     component: SeguidoresComponent,
     children: [
       { path: 'insertar', component: InsertareditarseguidoresComponent },
-      { path: 'ediciones/:id', component: InsertareditarseguidoresComponent },
+      { path: 'ediciones/:id', component: InsertareditarseguidoresComponent,data: { renderMode: 'server' } },
     ],
     canActivate: [seguridadGuard],
+    data: { renderMode: 'server' },
   },
   {
     path: 'comentarios',
     component: ComentarioComponent,
     children: [
       { path: 'insertareditar', component: InsertareditarcomentarioComponent },
-      { path: 'ediciones/:id', component: InsertareditarcomentarioComponent },
+      { path: 'ediciones/:id', component: InsertareditarcomentarioComponent,data: { renderMode: 'server' } },
+      
     ],
+    data: { renderMode: 'server' },
     canActivate: [seguridadGuard],
   },
   {
@@ -141,9 +155,10 @@ export const routes: Routes = [
     component: ReaccionComponent,
     children: [
       { path: 'insertareditar', component: InsertareditarreaccionComponent },
-      { path: 'ediciones/:id', component: InsertareditarreaccionComponent },
+      { path: 'ediciones/:id', component: InsertareditarreaccionComponent,data: { renderMode: 'server' } },
     ],
     canActivate: [seguridadGuard],
+    data: { renderMode: 'server' }
   },
   {
     path: 'reportes',
@@ -188,8 +203,9 @@ export const routes: Routes = [
     component: MusicaComponent,
     children: [
       { path: 'insertareditar', component: InsertareditarmusicaComponent },
-      { path: 'ediciones/:id', component: InsertareditarmusicaComponent },
+      { path: 'ediciones/:id', component: InsertareditarmusicaComponent,data: { renderMode: 'server' } },
     ],
+    data: { renderMode: 'server' }
   },
   {
     path: 'recomendaciones',
@@ -202,25 +218,30 @@ export const routes: Routes = [
       {
         path: 'ediciones/:id',
         component: InsertareditarrecomendacionComponent,
+        data: { renderMode: 'server' }
       },
     ],
+    data: { renderMode: 'server' }
   },
   {
     path: 'roles',
     component: RolesComponent,
     children: [
       { path: 'insertareditar', component: InsertareditarrolesComponent },
-      { path: 'ediciones/:id', component: InsertareditarrolesComponent },
+      { path: 'ediciones/:id', component: InsertareditarrolesComponent,data: { renderMode: 'server' } },
     ],
     canActivate: [seguridadGuard],
+    data: { renderMode: 'server' }
   },
   {
     path: 'asesoramientos',
     component: AsesoramientoComponent,
+    data: { renderMode: 'server' },
     children: [
       { path: 'insertareditar', component: InsertareditarasesoramientoComponent },
-      { path: 'ediciones/:id', component: InsertareditarasesoramientoComponent },
+      { path: 'ediciones/:id', component: InsertareditarasesoramientoComponent,data: { renderMode: 'server' } },
     ],
     canActivate: [seguridadGuard],
+    
   },
 ];
