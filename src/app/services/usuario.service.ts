@@ -6,6 +6,8 @@ import { Observable, Subject } from 'rxjs';
 import { UsuariosConMasMusicaAnonimaDTO } from '../models/UsuariosConMasMusicaAnonimaDTO';
 import { UsuariosConMasNotificacionesNoLeidasDTO } from '../models/UsuariosConMasNotificacionesNoLeidasDTO';
 import { UsuarioConPlaylistDTO } from '../models/UsuarioConPlaylistDTO';
+import { UsuariosConMasReaccionesNegativasDTO } from '../models/UsuariosConMasReaccionesNegativasDTO';
+import { UsuarioConMasSeguidoresDTO } from '../models/UsuarioConMasSeguidores';
 
 const base_url = environment.base;
 @Injectable({
@@ -49,4 +51,9 @@ export class UsuarioService {
   getUsuariosConPlaylist(): Observable<UsuarioConPlaylistDTO[]>{
     return this.http.get<UsuarioConPlaylistDTO[]>(`${this.url}/usuarioconplaylist`);
   }
+  getUsuariosConMasReaccionesNegativas(): Observable<UsuariosConMasReaccionesNegativasDTO[]> {
+    return this.http.get<UsuariosConMasReaccionesNegativasDTO[]>(`${this.url}/usuariosconreaccionesmasnegativas`)
+  }
+  getUsuariosConMasSeguidores(): Observable<UsuarioConMasSeguidoresDTO[]> {
+    return this.http.get<UsuarioConMasSeguidoresDTO[]>(`${this.url}/usuariosconmasseguidores`)}
 }//cambio

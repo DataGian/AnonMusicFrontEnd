@@ -35,6 +35,8 @@ import { AsesoramientoComponent } from './components/asesoramiento/asesoramiento
 import { InsertareditarasesoramientoComponent } from './components/asesoramiento/insertareditarasesoramiento/insertareditarasesoramiento.component';
 import { ReporteusuarioconplaylistComponent } from './components/reportes/reporteusuarioconplaylist/reporteusuarioconplaylist.component';
 import { ReportepublicacionesenrangodefechasComponent } from './components/reportes/reportepublicacionesenrangodefechas/reportepublicacionesenrangodefechas.component';
+import { ReporteusuariosconmasreaccionesnegativasComponent } from './components/reportes/reporteusuariosconmasreaccionesnegativas/reporteusuariosconmasreaccionesnegativas.component';
+import { ReporteusuariosconmasseguidoresComponent } from './components/reportes/reporteusuariosconmasseguidores/reporteusuariosconmasseguidores.component';
 
 export const routes: Routes = [
   {
@@ -170,7 +172,15 @@ export const routes: Routes = [
       {
         path:'publicacionesenrangodefecha',
         component: ReportepublicacionesenrangodefechasComponent,
-      }
+      },
+      {
+        path: 'usuariosconmasreaccionesnegativas',
+        component: ReporteusuariosconmasreaccionesnegativasComponent,
+      },
+      {
+        path: 'usuariosconmasseguidores',
+        component: ReporteusuariosconmasseguidoresComponent,
+      },
     ],
   },
   {
