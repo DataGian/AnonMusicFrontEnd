@@ -33,6 +33,8 @@ import { ReporteusuariosconmasmusicaanonimaComponent } from './components/report
 import { ReporteusuariosconmasnostificacionesnoleidasComponent } from './components/reportes/reporteusuariosconmasnostificacionesnoleidas/reporteusuariosconmasnostificacionesnoleidas.component';
 import { AsesoramientoComponent } from './components/asesoramiento/asesoramiento.component';
 import { InsertareditarasesoramientoComponent } from './components/asesoramiento/insertareditarasesoramiento/insertareditarasesoramiento.component';
+import { ReporteusuarioconplaylistComponent } from './components/reportes/reporteusuarioconplaylist/reporteusuarioconplaylist.component';
+import { ReportepublicacionesenrangodefechasComponent } from './components/reportes/reportepublicacionesenrangodefechas/reportepublicacionesenrangodefechas.component';
 
 export const routes: Routes = [
   {
@@ -161,6 +163,14 @@ export const routes: Routes = [
         path: 'usuariosmasnotificacionesnovistas',
         component: ReporteusuariosconmasnostificacionesnoleidasComponent,
       },
+      {
+        path: 'usuarioconplaylist',
+        component: ReporteusuarioconplaylistComponent,
+      },
+      {
+        path:'publicacionesenrangodefecha',
+        component: ReportepublicacionesenrangodefechasComponent,
+      }
     ],
   },
   {

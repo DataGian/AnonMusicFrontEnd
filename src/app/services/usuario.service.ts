@@ -5,6 +5,7 @@ import { Usuario } from '../models/usuario';
 import { Observable, Subject } from 'rxjs';
 import { UsuariosConMasMusicaAnonimaDTO } from '../models/UsuariosConMasMusicaAnonimaDTO';
 import { UsuariosConMasNotificacionesNoLeidasDTO } from '../models/UsuariosConMasNotificacionesNoLeidasDTO';
+import { UsuarioConPlaylistDTO } from '../models/UsuarioConPlaylistDTO';
 
 const base_url = environment.base;
 @Injectable({
@@ -44,5 +45,8 @@ export class UsuarioService {
   }
   getUsuariosConNotifiacionesNoLeidas(): Observable<UsuariosConMasNotificacionesNoLeidasDTO[]> {
     return this.http.get<UsuariosConMasNotificacionesNoLeidasDTO[]>(`${this.url}/usuariosconmasnotificacionesnoleidas`)
+  }
+  getUsuariosConPlaylist(): Observable<UsuarioConPlaylistDTO[]>{
+    return this.http.get<UsuarioConPlaylistDTO[]>(`${this.url}/usuarioconplaylist`);
   }
 }//cambio

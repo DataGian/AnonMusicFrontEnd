@@ -4,6 +4,7 @@ import { Publicacion } from '../models/publicacion';
 import { Observable, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { PublicacionesConMasComentariosDTO } from '../models/PublicacionesConMasComentariosDTO';
+import { PublicacionesFechasIngresadasDTO } from '../models/PublicacionesFechasIngresadasDTO';
 const base_url = environment.base;
 
 @Injectable({
@@ -42,5 +43,8 @@ export class PublicacionService {
   get5PubliconmasComentarios(): Observable<PublicacionesConMasComentariosDTO[]> {
     return this.h.get<PublicacionesConMasComentariosDTO[]>(`${this.url}/publicacionesconmascomentarios`);
   }
-  
+   getPublicacionesFechasIngresadas(fecha: string): Observable<PublicacionesFechasIngresadasDTO[]> {
+  const params = { fechaingresada: fecha };
+  return this.h.get<PublicacionesFechasIngresadasDTO[]>(`${this.url}/publicacionesporfecha`, { params });
+}
 }
