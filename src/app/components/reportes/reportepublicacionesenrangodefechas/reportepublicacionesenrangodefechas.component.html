@@ -1,0 +1,25 @@
+<div class="title-container">
+
+  <div style="text-align: center" class="title">
+   <h1 >Listar los 5 usuarios con menos playlist creadas</h1>
+  </div>
+  <div style="text-align: center" class="chart-container">
+<mat-form-field appearance="outline">
+  <mat-label>Elige una fecha</mat-label>
+  <input
+    matInput
+    [matDatepicker]="picker"
+    (dateChange)="onFechaSeleccionada($event.value)" />
+  <mat-hint>MM/DD/YYYY</mat-hint>
+  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+
+<!-- Gráfico -->
+<canvas baseChart
+  [datasets]="barChartData"
+  [labels]="barChartLabels"
+  [options]="barChartOptions"
+  [type]="barChartType"
+  [legend]="barChartLegend">
+</canvas>
